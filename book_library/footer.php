@@ -6,7 +6,8 @@
 						<div class="tg-threecolumns">
 							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
 								<div class="tg-footercol">
-									<strong class="tg-logo"><a href="javascript:void(0);"><img src="images/flogo.png" alt="image description"></a></strong>
+									<div class=""><a href="javascript:void(0);"><img src="images/flogo.png" alt="image description"></a></div>
+                                    <div class=""><a href="javascript:void(0);"><img src="images/dhgtvt-icon.png" alt="image description"></a></div>
 									<ul class="tg-contactinfo">
 										<li>
 											<i class="icon-apartment"></i>
