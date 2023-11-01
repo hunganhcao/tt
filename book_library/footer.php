@@ -7,7 +7,9 @@
 							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
 								<div class="tg-footercol">
 									<div class=""><a href="javascript:void(0);"><img src="images/flogo.png" alt="image description"></a></div>
-                                    <div class=""><a href="javascript:void(0);"><img src="images/dhgtvt-icon.png" alt="image description"></a></div>
+                                    <div class=""><a href="javascript:void(0);"><img src="images/dhgtvt-icon.png" alt="image description"></a>
+                                    <p>Trường Đại học Giao thông vận tải</p>
+                                    </div>
 									<ul class="tg-contactinfo">
 										<li>
 											<i class="icon-apartment"></i>
