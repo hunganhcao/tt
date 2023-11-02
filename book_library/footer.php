@@ -6,7 +6,7 @@
 						<div class="tg-threecolumns">
 							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
 								<div class="tg-footercol">
-									<div class=""><a href="javascript:void(0);"><img src="images/flogo.png" alt="image description"></a></div>
+									
                                     <div class=""><a href="javascript:void(0);"><img src="images/dhgtvt-icon.png" alt="image description"></a>
                                     <p>Trường Đại học Giao thông vận tải</p>
                                     </div>
@@ -89,13 +89,11 @@
 									<div class="tg-widgetcontent">
 										<ul>
 											<li><a href="javascript:void(0);">pdnghia0210@gamil.com</a></li>
-											<li><a href="javascript:void(0);">Terms of Sale</a></li>
-											<li><a href="javascript:void(0);">Returns</a></li>
-											<li><a href="javascript:void(0);">Privacy</a></li>
-											<li><a href="javascript:void(0);">Cookies</a></li>
-											<li><a href="javascript:void(0);">Contact Us</a></li>
-											<li><a href="javascript:void(0);">Our Affiliates</a></li>
-											<li><a href="javascript:void(0);">Vision &amp; Aim</a></li>
+											<li><a href="javascript:void(0);">nghiahiep1402@gmail.com</a></li>
+											<li><a href="javascript:void(0);">nghiahiep159@gmail.com</a></li>
+											<li><a href="javascript:void(0);">nghiahiep12302111@gmail.com</a></li>
+											<li><a href="javascript:void(0);">nghia201200250@lms.utc.edu.vn</a></li>
+											<li><a href="javascript:void(0);">huy201200161@lms.utc.edu.vn</a></li>
 										</ul>
 										
 									</div>
@@ -106,24 +104,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="tg-newsletter">
-				<div class="container">
-					<div class="row">
-						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-							<h4>Signup Newsletter!</h4>
-							<h5>Consectetur adipisicing elit sed do eiusmod tempor incididunt.</h5>
-						</div>
-						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-							<form class="tg-formtheme tg-formnewsletter">
-								<fieldset>
-									<input type="email" name="email" class="form-control" placeholder="Enter Your Email ID">
-									<button type="button"><i class="icon-envelope"></i></button>
-								</fieldset>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
+
 			<div class="tg-footerbar">
 				<a id="tg-btnbacktotop" class="tg-btnbacktotop" href="javascript:void(0);"><i class="icon-chevron-up"></i></a>
 				<div class="container">
