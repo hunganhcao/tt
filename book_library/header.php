@@ -180,7 +180,7 @@
 													while($row = mysqli_fetch_array($loaisp)) {                           
 														$id = $row['TL_ID'];
 														echo '<li id="n" role="presentation">
-														<a href="products.php?mod=dssp&id='.$id.'" >'.$row['TenTL'].'</a></li>';
+														<a href="products.php?id='.$id.'" >'.$row['TenTL'].'</a></li>';
 													}
 													?>	
 												</ul>
