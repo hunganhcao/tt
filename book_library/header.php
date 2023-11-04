@@ -16,6 +16,9 @@
 	<link rel="stylesheet" href="css/color.css">
 	<link rel="stylesheet" href="css/responsive.css">
 	<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+	<?php
+    require(__DIR__."/db.php");
+    ?>
 </head>
 <header id="tg-header" class="tg-header tg-haslayout">
 			<div class="tg-topbar">
@@ -171,35 +174,16 @@
 											<a href="javascript:void(0);">All Categories</a>
 											<div class="mega-menu">
 												<ul class="tg-themetabnav" role="tablist">
-													<li role="presentation" class="active">
-														<a href="#artandphotography" aria-controls="artandphotography" role="tab" data-toggle="tab">Art &amp; Photography</a>
-													</li>
-													<li role="presentation">
-														<a href="#biography" aria-controls="biography" role="tab" data-toggle="tab">Biography</a>
-													</li>
-													<li role="presentation">
-														<a href="#childrensbook" aria-controls="childrensbook" role="tab" data-toggle="tab">Children’s Book</a>
-													</li>
-													<li role="presentation">
-														<a href="#craftandhobbies" aria-controls="craftandhobbies" role="tab" data-toggle="tab">Craft &amp; Hobbies</a>
-													</li>
-													<li role="presentation">
-														<a href="#crimethriller" aria-controls="crimethriller" role="tab" data-toggle="tab">Crime &amp; Thriller</a>
-													</li>
-													<li role="presentation">
-														<a href="#fantasyhorror" aria-controls="fantasyhorror" role="tab" data-toggle="tab">Fantasy &amp; Horror</a>
-													</li>
-													<li role="presentation">
-														<a href="#fiction" aria-controls="fiction" role="tab" data-toggle="tab">Fiction</a>
-													</li>
-													<li role="presentation">
-														<a href="#fooddrink" aria-controls="fooddrink" role="tab" data-toggle="tab">Food &amp; Drink</a>
-													</li><li role="presentation">
-														<a href="#graphicanimemanga" aria-controls="graphicanimemanga" role="tab" data-toggle="tab">Graphic, Anime &amp; Manga</a>
-													</li>
-													<li role="presentation">
-														<a href="#sciencefiction" aria-controls="sciencefiction" role="tab" data-toggle="tab">Science Fiction</a>
-													</li>
+													<?php
+													$loai = "SELECT * FROM theloai ";
+													$loaisp = mysqli_query($connection, $loai);
+													while($row = mysqli_fetch_array($loaisp)) {                           
+														$id = $row['TL_ID'];
+														echo '<li id="n" role="presentation">
+														<a href="products.php?mod=dssp&id='.$id.'" aria-controls="artandphotography" role="tab" data-toggle="tab">
+														'.$row['TenTL'].'</a></li>';
+													}
+													?>	
 												</ul>
 												<div class="tab-content tg-themetabcontent">
 													<div role="tabpanel" class="tab-pane active" id="artandphotography">
