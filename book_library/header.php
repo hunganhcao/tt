@@ -180,8 +180,7 @@
 													while($row = mysqli_fetch_array($loaisp)) {                           
 														$id = $row['TL_ID'];
 														echo '<li id="n" role="presentation">
-														<a href="products.php?mod=dssp&id='.$id.'" aria-controls="artandphotography" role="tab" data-toggle="tab">
-														'.$row['TenTL'].'</a></li>';
+														<a href="products.php?mod=dssp&id='.$id.'" >'.$row['TenTL'].'</a></li>';
 													}
 													?>	
 												</ul>
@@ -241,7 +240,7 @@
 															</li>
 														</ul>
 													</div>
-													<div role="tabpanel" class="tab-pane" id="biography">
+													 <div role="tabpanel" class="tab-pane" id="biography">
 														<ul>
 															<li>
 																<div class="tg-linkstitle">
