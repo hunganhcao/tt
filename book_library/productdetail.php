@@ -66,38 +66,7 @@
 						<div id="tg-twocolumns" class="tg-twocolumns">
 							<div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 pull-right">
 								<div id="tg-content" class="tg-content">
-									<div class="tg-featurebook alert" role="alert">
-											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-												<span aria-hidden="true">&times;</span>
-											</button>
-											<div class="tg-featureditm">
-												<div class="row">
-													<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 hidden-sm hidden-xs">
-														<figure><img src="images/img-04.png" alt="image description"></figure>
-													</div>
-													<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-														<div class="tg-featureditmcontent">
-															<div class="tg-themetagbox"><span class="tg-themetag">featured</span></div>
-															<div class="tg-booktitle">
-																<h3><a href="javascript:void(0);">Things To Know About Green Flat Design</a></h3>
-															</div>
-															<span class="tg-bookwriter">By: <a href="javascript:void(0);">Farrah Whisenhunt</a></span>
-															<span class="tg-stars"><span></span></span>
-															<div class="tg-priceandbtn">
-																<span class="tg-bookprice">
-																	<ins>$23.18</ins>
-																	<del>$30.20</del>
-																</span>
-																<a class="tg-btn tg-btnstyletwo tg-active" href="javascript:void(0);">
-																	<i class="fa fa-shopping-basket"></i>
-																	<em>Add To Basket</em>
-																</a>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
+									
 									<div class="tg-productdetail">
 										<div class="row">
 											<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
@@ -120,9 +89,7 @@
 															<em class="plus">+</em>
 														</div>
 														<a class="tg-btn tg-active tg-btn-lg" href="javascript:void(0);">Add To Basket</a>
-														<a class="tg-btnaddtowishlist" href="javascript:void(0);">
-															<span>add to wishlist</span>
-														</a>
+														
 													</div>
 												</div>
 											</div>
@@ -167,19 +134,7 @@
 														<li><span>ISBN13:</span><span>1234567890000</span></li>
 														<li><span>Other Fomate:</span><span>CD-Audio, Paperback, E-Book</span></li>
 													</ul>
-													<div class="tg-alsoavailable">
-														<figure>
-															<img src="images/img-02.jpg" alt="image description">
-															<figcaption>
-																<h3>Also Available in:</h3>
-																<ul>
-																	<li><span>CD-Audio $18.30</span></li>
-																	<li><span>Paperback $20.10</span></li>
-																	<li><span>E-Book $11.30</span></li>
-																</ul>
-															</figcaption>
-														</figure>
-													</div>
+													
 												</div>
 											</div>
 											<div class="tg-productdescription">
