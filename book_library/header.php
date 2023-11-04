@@ -74,13 +74,13 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-							<strong class="tg-logo"><a href="index-2.html"><img src="images/logo.png" alt="company name here"></a></strong>
+							<strong class="tg-logo"><a href="index.php"><img src="images/logo.png" alt="company name here"></a></strong>
 							<div class="tg-wishlistandcart">
 								<div class="dropdown tg-themedropdown tg-wishlistdropdown">
 									<a href="javascript:void(0);" id="tg-wishlisst" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<span class="tg-themebadge">3</span>
 										<i class="icon-heart"></i>
-										<span>Wishlist</span>
+			
 									</a>
 									<div class="dropdown-menu tg-themedropdownmenu" aria-labelledby="tg-wishlisst">
 										<div class="tg-description"><p>No products were added to the wishlist!</p></div>
@@ -90,7 +90,7 @@
 									<a href="javascript:void(0);" id="tg-minicart" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<span class="tg-themebadge">3</span>
 										<i class="icon-cart"></i>
-										<span>$123.00</span>
+									
 									</a>
 									<div class="dropdown-menu tg-themedropdownmenu" aria-labelledby="tg-minicart">
 										<div class="tg-minicartbody">
@@ -132,7 +132,7 @@
 											</a>
 											<span class="tg-subtotal">Subtotal: <strong>35.78</strong></span>
 											<div class="tg-btns">
-												<a class="tg-btn tg-active" href="">View Cart</a>
+												<a class="tg-btn tg-active" href="cart.php">View Cart</a>
 												<a class="tg-btn" href="javascript:void(0);">Checkout</a>
 											</div>
 										</div>
