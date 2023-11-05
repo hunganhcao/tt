@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	 <title>Book Library</title>
+	<title>Book Library</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -20,6 +20,7 @@
 	<link rel="stylesheet" href="css/responsive.css">
 	<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
+
 <body>
 
 	<div id="tg-wrapper" class="tg-wrapper tg-haslayout">
@@ -27,7 +28,7 @@
 				Header Start
 		*************************************-->
 		<?php
-		include(__DIR__."/header.php");
+		include(__DIR__ . "/header.php");
 		?>
 		<!--************************************
 				Header End
@@ -61,7 +62,7 @@
 					News Grid Start
 			*************************************-->
 			<?php
-			if(isset($_GET['id'])) {
+			if (isset($_GET['id'])) {
 				$id = $_GET['id'];
 				$sql = "SELECT TenSach,sanpham.SP_ID,sanpham.HinhAnh,chitietsp.GiaBan,TenTG ,TenTL,theloai.TL_ID
 									 FROM sanpham  
@@ -70,12 +71,12 @@
 									 join theloai on sanpham.TL_ID=theloai.TL_ID
 									 WHERE chitietsp.TapSo =1 AND sanpham.TL_ID= $id ";
 
-    // 3. Thực thi câu truy vấn
-    $result = mysqli_query($connection, $sql);
-    $loai = "SELECT * FROM theloai WHERE TL_ID = $id";
-    $loaisp = mysqli_query($connection, $loai);
-    $loaisp = mysqli_fetch_array($loaisp);
-			} 
+				// 3. Thực thi câu truy vấn
+				$result = mysqli_query($connection, $sql);
+				$loai = "SELECT * FROM theloai WHERE TL_ID = $id";
+				$loaisp = mysqli_query($connection, $loai);
+				$loaisp = mysqli_fetch_array($loaisp);
+			}
 			?>
 			<div class="tg-sectionspace tg-haslayout">
 				<div class="container">
@@ -121,7 +122,7 @@
 										</div>
 										<div class="tg-productgrid">
 											<div class="tg-refinesearch">
-												
+
 												<form class="tg-formtheme tg-formsortshoitems">
 													<fieldset>
 														<div class="form-group">
@@ -147,56 +148,54 @@
 													</fieldset>
 												</form>
 												<?php
-												echo'<span>'.$loaisp['TenTL'] .'</span>';
+												echo '<span>' . $loaisp['TenTL'] . '</span>';
 												?>
-												
+
 											</div>
 											<?php
-											
-											while($row = mysqli_fetch_array($result))
-									{
-										$id = $row['SP_ID'];
-										$name = $row['TenSach'];
-										$price = $row['GiaBan'];
-										$hinh = $row['HinhAnh'];
-										$tg= $row['TenTG'];
-										$tl=$row['TenTL'];
 
-										echo'<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">';
-									 	echo'<div class="tg-postbook">';
-									 	echo'<figure class="tg-featureimg"><a href="productdetail.php?id='.$id.'">';
-									 	echo'<div class="tg-bookimg">';
-									 	echo'<div class="tg-frontcover ">
-										 <img src="images/books/'.$hinh.'"  style="width:200px; height: 300px;" class="img-fluid"></div>';
-										echo'<div class="tg-backcover"><img src="images/books/'.$hinh.'" style="width: 200px; height: 150px;" class="img-fluid"></div>';
-										echo'	</div>';
-											
-										echo'</a></figure>';
-										echo'<div class="tg-postbookcontent">';
-										echo	'	<ul class="tg-bookscategories">
-												<li><a href="javascript:void(0);">'.$tl.'</a></li>
+											while ($row = mysqli_fetch_array($result)) {
+												$id = $row['SP_ID'];
+												$name = $row['TenSach'];
+												$price = $row['GiaBan'];
+												$hinh = $row['HinhAnh'];
+												$tg = $row['TenTG'];
+												$tl = $row['TenTL'];
+
+												echo '<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">';
+												echo '<div class="tg-postbook">';
+												echo '<figure class="tg-featureimg"><a href="productdetail.php?id=' . $id . '">';
+												echo '<div class="tg-bookimg">';
+												echo '<div class="tg-frontcover ">
+										 <img src="images/books/' . $hinh . '"  style="width:200px; height: 300px;" class="img-fluid"></div>';
+												echo '<div class="tg-backcover"><img src="images/books/' . $hinh . '" style="width: 200px; height: 150px;" class="img-fluid"></div>';
+												echo '	</div>';
+
+												echo '</a></figure>';
+												echo '<div class="tg-postbookcontent">';
+												echo	'	<ul class="tg-bookscategories">
+												<li><a href="javascript:void(0);">' . $tl . '</a></li>
 											</ul>';
-										echo'	<div class="tg-themetagbox"><span class="tg-themetag">sale</span></div>';
-										echo'<div class="tg-booktitle" >';
-											echo'	<h3><a href="productdetail.php?id='.$id.'">'.$name.'</a></h3>'.
-											'</div>'.
-											'<span class="tg-bookwriter">By: <a href="javascript:void(0);">'.$tg.'</a></span>'.
-											'<span class="tg-stars"><span></span></span>'.
-											'<span class="tg-bookprice">'.
-												'<ins>'.$price.'đ</ins>'.
-												
-											'</span>'.
-											'<a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">'.
-												'<i class="fa fa-shopping-basket"></i>'.
-												'<em>Add To Basket</em>'.
-											'</a>'.
-										'</div>'.
-									'</div>'.
-								'</div>';
-									
-									}
+												echo '	<div class="tg-themetagbox"><span class="tg-themetag">sale</span></div>';
+												echo '<div class="tg-booktitle" >';
+												echo '	<h3><a href="productdetail.php?id=' . $id . '">' . $name . '</a></h3>' .
+													'</div>' .
+													'<span class="tg-bookwriter">By: <a href="javascript:void(0);">' . $tg . '</a></span>' .
+													'<span class="tg-stars"><span></span></span>' .
+													'<span class="tg-bookprice">' .
+													'<ins>' . $price . 'đ</ins>' .
+
+													'</span>' .
+													'<a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">' .
+													'<i class="fa fa-shopping-basket"></i>' .
+													'<em>Add To Basket</em>' .
+													'</a>' .
+													'</div>' .
+													'</div>' .
+													'</div>';
+											}
 											?>
-											
+
 										</div>
 									</div>
 								</div>
@@ -231,7 +230,7 @@
 											</ul>
 										</div>
 									</div>
-									
+
 									<div class="tg-widget tg-widgetinstagram">
 										<div class="tg-widgettitle">
 											<h3>Instagramsssssss</h3>
@@ -295,7 +294,7 @@
 											</ul>
 										</div>
 									</div>
-									
+
 								</aside>
 							</div>
 						</div>
@@ -313,7 +312,7 @@
 				Footer Start
 		*************************************-->
 		<?php
-		include(__DIR__."/footer.php");
+		include(__DIR__ . "/footer.php");
 		?>
 		<!--************************************
 				Footer End

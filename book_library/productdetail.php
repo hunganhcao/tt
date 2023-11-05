@@ -1,9 +1,10 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	 <title>Book Library</title>
+	<title>Book Library</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -19,6 +20,7 @@
 	<link rel="stylesheet" href="css/responsive.css">
 	<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
+
 <body>
 
 	<div id="tg-wrapper" class="tg-wrapper tg-haslayout">
@@ -26,7 +28,7 @@
 				Header Start
 		*************************************-->
 		<?php
-		include(__DIR__."/header.php");
+		include(__DIR__ . "/header.php");
 		?>
 		<!--************************************
 				Header End
@@ -66,7 +68,7 @@
 						<div id="tg-twocolumns" class="tg-twocolumns">
 							<div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 pull-right">
 								<div id="tg-content" class="tg-content">
-									
+
 									<div class="tg-productdetail">
 										<div class="row">
 											<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
@@ -89,7 +91,7 @@
 															<em class="plus">+</em>
 														</div>
 														<a class="tg-btn tg-active tg-btn-lg" href="javascript:void(0);">Add To Basket</a>
-														
+
 													</div>
 												</div>
 											</div>
@@ -134,7 +136,7 @@
 														<li><span>ISBN13:</span><span>1234567890000</span></li>
 														<li><span>Other Fomate:</span><span>CD-Audio, Paperback, E-Book</span></li>
 													</ul>
-													
+
 												</div>
 											</div>
 											<div class="tg-productdescription">
@@ -150,8 +152,8 @@
 														<div role="tabpanel" class="tg-tab-pane tab-pane active" id="description">
 															<div class="tg-description">
 																<p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veni quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenden
-voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-																
+																	voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+
 																<ul class="tg-liststyle">
 																	<li><span>Sed do eiusmod tempor incididunt ut labore et dolore</span></li>
 																	<li><span>Magna aliqua enim ad minim veniam</span></li>
@@ -162,14 +164,14 @@ voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
 																	<li><span>Quis nostrud exercitation ullamco laboris nisi ut</span></li>
 																</ul>
 																<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam remmata aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enimsam
-voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos quistatoa.</p>
+																	voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos quistatoa.</p>
 															</div>
 														</div>
 														<div role="tabpanel" class="tg-tab-pane tab-pane" id="review">
 															<div class="tg-description">
 																<p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veni quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenden
-voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-																
+																	voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+
 																<ul class="tg-liststyle">
 																	<li><span>Sed do eiusmod tempor incididunt ut labore et dolore</span></li>
 																	<li><span>Magna aliqua enim ad minim veniam</span></li>
@@ -180,7 +182,7 @@ voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
 																	<li><span>Quis nostrud exercitation ullamco laboris nisi ut</span></li>
 																</ul>
 																<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam remmata aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enimsam
-voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos quistatoa.</p>
+																	voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos quistatoa.</p>
 															</div>
 														</div>
 													</div>
@@ -221,7 +223,7 @@ voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntu
 													</div>
 												</div>
 											</div>
-											
+
 										</div>
 									</div>
 								</div>
@@ -256,7 +258,7 @@ voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntu
 											</ul>
 										</div>
 									</div>
-									
+
 									<div class="tg-widget tg-widgetinstagram">
 										<div class="tg-widgettitle">
 											<h3>Instagram</h3>
@@ -320,7 +322,7 @@ voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntu
 											</ul>
 										</div>
 									</div>
-									
+
 								</aside>
 							</div>
 						</div>
@@ -338,7 +340,7 @@ voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntu
 				Footer Start
 		*************************************-->
 		<?php
-		include(__DIR__."/footer.php");
+		include(__DIR__ . "/footer.php");
 		?>
 		<!--************************************
 				Footer End
