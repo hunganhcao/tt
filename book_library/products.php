@@ -63,7 +63,7 @@
 			<?php
 			if(isset($_GET['id'])) {
 				$id = $_GET['id'];
-				$sql = "SELECT TenSach,sanpham.SP_ID,sanpham.HinhAnh,chitietsp.GiaBan,TenTG ,TenTL
+				$sql = "SELECT TenSach,sanpham.SP_ID,sanpham.HinhAnh,chitietsp.GiaBan,TenTG ,TenTL,theloai.TL_ID
 									 FROM sanpham  
 									 join chitietsp ON sanpham.SP_ID=chitietsp.SP_ID 
 									 join tacgia on sanpham.TG_ID=tacgia.TG_ID 
@@ -164,21 +164,21 @@
 
 										echo'<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">';
 									 	echo'<div class="tg-postbook">';
-									 	echo'<figure class="tg-featureimg">';
+									 	echo'<figure class="tg-featureimg"><a href="productdetail.php?id='.$id.'">';
 									 	echo'<div class="tg-bookimg">';
 									 	echo'<div class="tg-frontcover ">
 										 <img src="images/books/'.$hinh.'"  style="width:200px; height: 300px;" class="img-fluid"></div>';
 										echo'<div class="tg-backcover"><img src="images/books/'.$hinh.'" style="width: 200px; height: 150px;" class="img-fluid"></div>';
 										echo'	</div>';
 											
-										echo'</figure>';
+										echo'</a></figure>';
 										echo'<div class="tg-postbookcontent">';
 										echo	'	<ul class="tg-bookscategories">
 												<li><a href="javascript:void(0);">'.$tl.'</a></li>
 											</ul>';
 										echo'	<div class="tg-themetagbox"><span class="tg-themetag">sale</span></div>';
 										echo'<div class="tg-booktitle" >';
-											echo'	<h3><a href="javascript:void(0);">'.$name.'</a></h3>'.
+											echo'	<h3><a href="productdetail.php?id='.$id.'">'.$name.'</a></h3>'.
 											'</div>'.
 											'<span class="tg-bookwriter">By: <a href="javascript:void(0);">'.$tg.'</a></span>'.
 											'<span class="tg-stars"><span></span></span>'.
