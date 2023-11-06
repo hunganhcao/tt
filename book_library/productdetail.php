@@ -77,9 +77,9 @@
 													<div class="tg-postbookcontent">
 														<span class="tg-bookprice">
 															<ins>$25.18</ins>
-															<del>$27.20</del>
+															
 														</span>
-														<span class="tg-bookwriter">You save $4.02</span>
+														
 														<ul class="tg-delevrystock">
 															<li><i class="icon-rocket"></i><span>Free delivery worldwide</span></li>
 															<li><i class="icon-checkmark-circle"></i><span>Dispatch from the USA in 2 working days </span></li>

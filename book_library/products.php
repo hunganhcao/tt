@@ -85,7 +85,9 @@
 							<div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 pull-right">
 								<div id="tg-content" class="tg-content">
 									<div class="tg-products">
-										
+										<div class="tg-sectionhead">
+											<h2><span>People’s Choice</span>Bestselling Books</h2>
+										</div>
 										
 										<div class="tg-productgrid">
 											<div class="tg-refinesearch">
@@ -182,8 +184,8 @@
 											<h3>Categories</h3>
 										</div>
 										<div class="tg-widgetcontent">
-										<ul class="tg-themetabnav" role="tablist">
-													<?php
+											<ul>
+											<?php
 													$loai = "SELECT * FROM theloai ";
 													$loaisp = mysqli_query($connection, $loai);
 													while($row = mysqli_fetch_array($loaisp)) {                           
@@ -192,7 +194,7 @@
 														<a href="products.php?id='.$id.'" >'.$row['TenTL'].'</a></li>';
 													}
 													?>	
-												</ul>
+											</ul>
 										</div>
 									</div>
 
