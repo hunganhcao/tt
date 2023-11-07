@@ -132,6 +132,7 @@
 														$hinh = $row['HinhAnh'];
 														$tg = $row['TenTG'];
 														$tl = $row['TenTL'];
+														$tlid=$row['TL_ID'];
 
 														echo '<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">';
 														echo '<div class="tg-postbook">';
@@ -145,7 +146,7 @@
 														echo '</a>';
 														echo '<div class="tg-postbookcontent">';
 														echo	'	<ul class="tg-bookscategories">
-							   <li><a href="javascript:void(0);">' . $tl . '</a></li>
+							   <li><a href="products.php?id=' . $tlid . '">' . $tl . '</a></li>
 						   </ul>';
 														echo '	<div class="tg-themetagbox"><span class="tg-themetag">sale</span></div>';
 														echo '<div class="tg-booktitle" >';
@@ -192,6 +193,7 @@
 														$hinh = $row['HinhAnh'];
 														$tg = $row['TenTG'];
 														$tl = $row['TenTL'];
+														$tlid=$row['TL_ID'];
 
 														echo '<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">';
 														echo '<div class="tg-postbook">';
@@ -205,7 +207,7 @@
 														echo '</a>';
 														echo '<div class="tg-postbookcontent">';
 														echo	'	<ul class="tg-bookscategories">
-							   							<li><a href="javascript:void(0);">' . $tl . '</a></li>
+							   							<li><a href="products.php?id=' . $tlid . '">' . $tl . '</a></li>
 						  								 </ul>';
 														echo '	<div class="tg-themetagbox"><span class="tg-themetag">sale</span></div>';
 														echo '<div class="tg-booktitle" >';
