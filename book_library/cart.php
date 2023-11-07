@@ -23,7 +23,27 @@
 	                <div class="container">
 	                	<div class="row">
 	                		<div class="col-lg-9">
-	                			<table class="table table-cart table-mobile">
+							<?php
+								$sql = "SELECT TenSach,sanpham.SP_ID,sanpham.HinhAnh,chitietsp.GiaBan,TenTG ,TenTL,theloai.TL_ID
+								FROM sanpham  
+								join chitietsp ON sanpham.SP_ID=chitietsp.SP_ID 
+								join tacgia on sanpham.TG_ID=tacgia.TG_ID 
+								join theloai on sanpham.TL_ID=theloai.TL_ID
+								WHERE chitietsp.TapSo =1 ORDER BY TenSach ASC LIMIT 7";
+
+					   // 3. Thực thi câu truy vấn
+					   $result = mysqli_query($connection, $sql);
+
+					   while ($row = mysqli_fetch_array($result)) {
+						   $id = $row['SP_ID'];
+						   $name = $row['TenSach'];
+						   $price = $row['GiaBan'];
+						   $hinh = $row['HinhAnh'];
+						   $tg = $row['TenTG'];
+						   $tl = $row['TenTL'];
+						   $tlid = $row['TL_ID'];
+	                			echo '<table class="table table-cart table-mobile">
+									
 									<thead>
 										<tr>
 											<th>Product</th>
@@ -33,57 +53,35 @@
 											<th></th>
 										</tr>
 									</thead>
-
+									
 									<tbody>
 										<tr>
 											<td class="product-col">
 												<div class="product">
 													<figure class="product-media">
 														<a href="#">
-															<img src="assets/images/products/table/product-1.jpg" alt="Product image">
+															<img src="images/books/' . $hinh . '"  style="width: 100px; height: 100px;" alt="Product image">
 														</a>
 													</figure>
 
 													<h3 class="product-title">
-														<a href="#">Beige knitted elastic runner shoes</a>
+														<a href="#">'.$name.'</a>
 													</h3><!-- End .product-title -->
 												</div><!-- End .product -->
 											</td>
-											<td class="price-col">$84.00</td>
+											<td class="price-col">'.$price.'</td>
 											<td class="quantity-col">
                                                 <div class="cart-product-quantity">
                                                     <input type="number" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required>
                                                 </div><!-- End .cart-product-quantity -->
                                             </td>
-											<td class="total-col">$84.00</td>
+											<td class="total-col">'.$price.'</td>
 											<td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button></td>
 										</tr>
-										<tr>
-											<td class="product-col">
-												<div class="product">
-													<figure class="product-media">
-														<a href="#">
-															<img src="assets/images/products/table/product-2.jpg" alt="Product image">
-														</a>
-													</figure>
-
-													<h3 class="product-title">
-														<a href="#">Blue utility pinafore denim dress</a>
-													</h3><!-- End .product-title -->
-												</div><!-- End .product -->
-											</td>
-											<td class="price-col">$76.00</td>
-											<td class="quantity-col">
-                                                <div class="cart-product-quantity">
-                                                    <input type="number" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required>
-                                                </div><!-- End .cart-product-quantity -->                                 
-                                            </td>
-											<td class="total-col">$76.00</td>
-											<td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button></td>
-										</tr>
-									</tbody>
-								</table><!-- End .table table-wishlist -->
-
+					   
+								</table><!-- End .table table-wishlist -->';
+					   		}
+							?>
 	                			<div class="cart-bottom">
 			            			<div class="cart-discount">
 			            				<form action="#">
@@ -155,7 +153,7 @@
 	                						</tr><!-- End .summary-total -->
 	                					</tbody>
 	                				</table><!-- End .table table-summary -->
-
+									
 	                				<a href="checkout.html" class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO CHECKOUT</a>
 	                			</div><!-- End .summary -->
 

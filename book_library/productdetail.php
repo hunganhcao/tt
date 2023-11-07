@@ -72,72 +72,98 @@
 									<div class="tg-productdetail">
 										<div class="row">
 											<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-												<div class="tg-postbook">
-													<figure class="tg-featureimg"><img src="images/books/img-07.jpg" alt="image description"></figure>
-													<div class="tg-postbookcontent">
-														<span class="tg-bookprice">
-															<ins>$25.18</ins>
+												<?php
+												$sql = "SELECT TenSach,sanpham.SP_ID,sanpham.HinhAnh,sanpham.MoTa,chitietsp.GiaBan,TenTG ,TenTL,theloai.TL_ID,TenNXB,
+												chitietsp.SoTrang,chitietsp.NamXB
+												FROM sanpham  
+												join chitietsp ON sanpham.SP_ID=chitietsp.SP_ID 
+												join tacgia on sanpham.TG_ID=tacgia.TG_ID 
+												join theloai on sanpham.TL_ID=theloai.TL_ID
+												join nhaxuatban on sanpham.NXB_ID=nhaxuatban.NXB_ID
+												WHERE chitietsp.TapSo =1 ORDER BY TenSach ASC LIMIT 7";
+				
+									   // 3. Thực thi câu truy vấn
+									   $result = mysqli_query($connection, $sql);
+				
+									   while ($row = mysqli_fetch_array($result)) {
+										   $id = $row['SP_ID'];
+										   $name = $row['TenSach'];
+										   $price = $row['GiaBan'];
+										   $hinh = $row['HinhAnh'];
+										   $tg = $row['TenTG'];
+										   $tl = $row['TenTL'];
+										   $nxb = $row['TenNXB'];
+										   $tlid = $row['TL_ID'];
+										   $SoTrang = $row['SoTrang'];
+										   $namxb = $row['NamXB'];
+										   $mota = $row['MoTa'];
+												echo'<div class="tg-postbook">';
+												echo	'<figure class="tg-featureimg"><img src="images/books/' . $hinh . '"  style="width:200px; height: 300px;" alt="image description"></figure>';
+												echo	'<div class="tg-postbookcontent">';
+												echo		'<span class="tg-bookprice">';
+												echo			'<ins>'.$price.'vnd</ins>';
 															
-														</span>
+												echo		'</span>';
 														
-														<ul class="tg-delevrystock">
+												echo		'<ul class="tg-delevrystock">
 															<li><i class="icon-rocket"></i><span>Free delivery worldwide</span></li>
 															<li><i class="icon-checkmark-circle"></i><span>Dispatch from the USA in 2 working days </span></li>
 															<li><i class="icon-store"></i><span>Status: <em>In Stock</em></span></li>
-														</ul>
-														<div class="tg-quantityholder">
+														</ul>';
+												echo		'<div class="tg-quantityholder">
 															<em class="minus">-</em>
 															<input type="text" class="result" value="0" id="quantity1" name="quantity">
 															<em class="plus">+</em>
-														</div>
-														<a class="tg-btn tg-active tg-btn-lg" href="javascript:void(0);">Add To Basket</a>
+														</div>';
+												echo		'<a class="tg-btn tg-active tg-btn-lg" href="cart.php?id=' . $id . '">Add To Basket</a>';
 
-													</div>
-												</div>
-											</div>
-											<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-												<div class="tg-productcontent">
-													<ul class="tg-bookscategories">
-														<li><a href="javascript:void(0);">Art &amp; Photography</a></li>
-													</ul>
-													<div class="tg-themetagbox"><span class="tg-themetag">sale</span></div>
-													<div class="tg-booktitle">
-														<h3>Drive Safely, No Bumping</h3>
-													</div>
-													<span class="tg-bookwriter">By: <a href="javascript:void(0);">Angela Gunning</a></span>
-													<span class="tg-stars"><span></span></span>
-													<span class="tg-addreviews"><a href="javascript:void(0);">Add Your Review</a></span>
-													<div class="tg-share">
-														<span>Share:</span>
-														<ul class="tg-socialicons">
+												echo	'</div>';
+												echo '</div>'.
+											'</div>'.
+											'<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">'.
+												'<div class="tg-productcontent">'.
+													'<ul class="tg-bookscategories">'.
+														'<li><a href="javascript:void(0);">Art &amp; Photography</a></li>'.
+													'</ul>'.
+													'<div class="tg-themetagbox"><span class="tg-themetag">sale</span></div>'.
+													'<div class="tg-booktitle">'.
+														'<h3>'.$name.'</h3>'.
+													'</div>'.
+													'<span class="tg-bookwriter">By: <a href="javascript:void(0);">'.$tg.'</a></span>'.
+													'<span class="tg-stars"><span></span></span>'.
+													'<span class="tg-addreviews"><a href="javascript:void(0);">Add Your Review</a></span>'.
+													'<div class="tg-share">'.
+														'<span>Share:</span>'.
+														'<ul class="tg-socialicons">
 															<li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
 															<li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
 															<li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
 															<li class="tg-googleplus"><a href="javascript:void(0);"><i class="fa fa-google-plus"></i></a></li>
 															<li class="tg-rss"><a href="javascript:void(0);"><i class="fa fa-rss"></i></a></li>
-														</ul>
-													</div>
-													<div class="tg-description">
-														<p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore etdoloreat magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laborisi nisi ut aliquip ex ea commodo consequat aute.</p>
-														<p>Arure dolor in reprehenderit in voluptate velit esse cillum dolore fugiat nulla aetur excepteur sint occaecat cupidatat non proident, sunt in culpa quistan officia serunt mollit anim id est laborum sed ut perspiciatis unde omnis iste natus... <a href="javascript:void(0);">More</a></p>
-													</div>
-													<div class="tg-sectionhead">
-														<h2>Product Details</h2>
-													</div>
-													<ul class="tg-productinfo">
-														<li><span>Format:</span><span>Hardback</span></li>
-														<li><span>Pages:</span><span>528 pages</span></li>
+														</ul>'.
+													'</div>'.
+													'<div class="tg-description">'.
+														'<p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore etdoloreat magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laborisi nisi ut aliquip ex ea commodo consequat aute.</p>'.
+														'<p>Arure dolor in reprehenderit in voluptate velit esse cillum dolore fugiat nulla aetur excepteur sint occaecat cupidatat non proident, sunt in culpa quistan officia serunt mollit anim id est laborum sed ut perspiciatis unde omnis iste natus... <a href="javascript:void(0);">More</a></p>'.
+													'</div>'.
+													'<div class="tg-sectionhead">'.
+														'<h2>Product Details</h2>'.
+													'</div>'.
+													'<ul class="tg-productinfo">
+														<li><span>Format:</span><span>'.$tl.'</span></li>
+														<li><span>Pages:</span><span>'.$SoTrang.' pages</span></li>
 														<li><span>Dimensions:</span><span>153 x 234 x 43mm | 758g</span></li>
-														<li><span>Publication Date:</span><span>June 27, 2017</span></li>
-														<li><span>Publisher:</span><span>Sunshine Orlando</span></li>
+														<li><span>Publication Year:</span><span>'.$namxb.'</span></li>
+														<li><span>Publisher:</span><span>'.$nxb.'</span></li>
 														<li><span>Language:</span><span>English</span></li>
-														<li><span>Illustrations note:</span><span>b&amp;w images thru-out; 1 x 16pp colour plates</span></li>
-														<li><span>ISBN10:</span><span>1234567890</span></li>
-														<li><span>ISBN13:</span><span>1234567890000</span></li>
+														<li><span>Illustrations note:</span><span>'.$mota.'</span></li>
+														
 														<li><span>Other Fomate:</span><span>CD-Audio, Paperback, E-Book</span></li>
-													</ul>
+													</ul>'.
 
-												</div>
+												'</div>';
+									   			}
+												?>
 											</div>
 											<div class="tg-productdescription">
 												<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -188,41 +214,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="tg-aboutauthor">
-												<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-													<div class="tg-sectionhead">
-														<h2>About Author</h2>
-													</div>
-													<div class="tg-authorbox">
-														<figure class="tg-authorimg">
-															<img src="images/author/imag-24.jpg" alt="image description">
-														</figure>
-														<div class="tg-authorinfo">
-															<div class="tg-authorhead">
-																<div class="tg-leftarea">
-																	<div class="tg-authorname">
-																		<h2>Kathrine Culbertson</h2>
-																		<span>Author Since: June 27, 2017</span>
-																	</div>
-																</div>
-																<div class="tg-rightarea">
-																	<ul class="tg-socialicons">
-																		<li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-																		<li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-																		<li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
-																		<li class="tg-googleplus"><a href="javascript:void(0);"><i class="fa fa-google-plus"></i></a></li>
-																		<li class="tg-rss"><a href="javascript:void(0);"><i class="fa fa-rss"></i></a></li>
-																	</ul>
-																</div>
-															</div>
-															<div class="tg-description">
-																<p>Laborum sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis etation.</p>
-															</div>
-															<a class="tg-btn tg-active" href="javascript:void(0);">View All Books</a>
-														</div>
-													</div>
-												</div>
-											</div>
+
 
 										</div>
 									</div>

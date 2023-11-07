@@ -46,6 +46,7 @@
 							<a class="tg-btn" href="products.php">View All</a>
 						</div>
 					</div>
+					
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<div id="tg-bestsellingbooksslider" class="tg-bestsellingbooksslider tg-bestsellingbooks owl-carousel">
 							<?php
@@ -91,7 +92,7 @@
 									'<ins>' . $price . 'đ</ins>' .
 
 									'</span>' .
-									'<a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">' .
+									'<a class="tg-btn tg-btnstyletwo" href="cart.php?id=' . $id . '">' .
 									'<i class="fa fa-shopping-basket"></i>' .
 									'<em>Add To Basket</em>' .
 									'</a>' .
