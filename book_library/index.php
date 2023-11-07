@@ -55,7 +55,7 @@
 									 join chitietsp ON sanpham.SP_ID=chitietsp.SP_ID 
 									 join tacgia on sanpham.TG_ID=tacgia.TG_ID 
 									 join theloai on sanpham.TL_ID=theloai.TL_ID
-									 WHERE chitietsp.TapSo =1 ORDER BY TenSach ASC LIMIT 7";
+									 WHERE chitietsp.TapSo =1 ORDER BY TenSach ASC LIMIT 10";
 
 							// 3. Thực thi câu truy vấn
 							$result = mysqli_query($connection, $sql);

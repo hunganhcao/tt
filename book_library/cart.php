@@ -24,11 +24,11 @@
 	                	<div class="row">
 	                		<div class="col-lg-9">
 							<?php
-								$sql = "SELECT TenSach,sanpham.SP_ID,sanpham.HinhAnh,chitietsp.GiaBan,TenTG ,TenTL,theloai.TL_ID
+								$sql = "SELECT TenSach,sanpham.SP_ID,sanpham.HinhAnh,chitietsp.GiaBan
 								FROM sanpham  
 								join chitietsp ON sanpham.SP_ID=chitietsp.SP_ID 
-								join tacgia on sanpham.TG_ID=tacgia.TG_ID 
-								join theloai on sanpham.TL_ID=theloai.TL_ID
+								
+								
 								WHERE chitietsp.TapSo =1 ORDER BY TenSach ASC LIMIT 7";
 
 					   // 3. Thực thi câu truy vấn
@@ -39,9 +39,8 @@
 						   $name = $row['TenSach'];
 						   $price = $row['GiaBan'];
 						   $hinh = $row['HinhAnh'];
-						   $tg = $row['TenTG'];
-						   $tl = $row['TenTL'];
-						   $tlid = $row['TL_ID'];
+						  
+						   
 	                			echo '<table class="table table-cart table-mobile">
 									
 									<thead>

@@ -36,6 +36,7 @@
 		<!--************************************
 				Inner Banner Start
 		*************************************-->
+		
 		<div class="tg-innerbanner tg-haslayout tg-parallax tg-bginnerbanner" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" data-image-src="images/parallax/bgparallax-07.jpg">
 			<div class="container">
 				<div class="row">
@@ -73,6 +74,8 @@
 										<div class="row">
 											<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 												<?php
+												if(isset($_GET['id'])){
+													$id = $_GET['id'];
 												$sql = "SELECT TenSach,sanpham.SP_ID,sanpham.HinhAnh,sanpham.MoTa,chitietsp.GiaBan,TenTG ,TenTL,theloai.TL_ID,TenNXB,
 												chitietsp.SoTrang,chitietsp.NamXB
 												FROM sanpham  
@@ -80,11 +83,11 @@
 												join tacgia on sanpham.TG_ID=tacgia.TG_ID 
 												join theloai on sanpham.TL_ID=theloai.TL_ID
 												join nhaxuatban on sanpham.NXB_ID=nhaxuatban.NXB_ID
-												WHERE chitietsp.TapSo =1 ORDER BY TenSach ASC LIMIT 7";
+												WHERE sanpham.SP_ID =".$id."";}
 				
 									   // 3. Thực thi câu truy vấn
 									   $result = mysqli_query($connection, $sql);
-				
+													
 									   while ($row = mysqli_fetch_array($result)) {
 										   $id = $row['SP_ID'];
 										   $name = $row['TenSach'];
@@ -101,7 +104,7 @@
 												echo	'<figure class="tg-featureimg"><img src="images/books/' . $hinh . '"  style="width:200px; height: 300px;" alt="image description"></figure>';
 												echo	'<div class="tg-postbookcontent">';
 												echo		'<span class="tg-bookprice">';
-												echo			'<ins>'.$price.'vnd</ins>';
+												echo			'<ins>'.$price.'đ</ins>';
 															
 												echo		'</span>';
 														
@@ -152,7 +155,7 @@
 													'<ul class="tg-productinfo">
 														<li><span>Format:</span><span>'.$tl.'</span></li>
 														<li><span>Pages:</span><span>'.$SoTrang.' pages</span></li>
-														<li><span>Dimensions:</span><span>153 x 234 x 43mm | 758g</span></li>
+														
 														<li><span>Publication Year:</span><span>'.$namxb.'</span></li>
 														<li><span>Publisher:</span><span>'.$nxb.'</span></li>
 														<li><span>Language:</span><span>English</span></li>
