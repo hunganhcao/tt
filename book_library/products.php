@@ -128,8 +128,13 @@
 															$result = mysqli_query($connection, $sql);
 															echo '<span> ALL </span>' ;
 														}
-														if(isset($_GET['search'])){
-															
+														if(isset($_REQUEST['ok'])){
+															$search=addslashes($_GET['search']);
+															if(!empty($search)){
+																$sql.="WHERE chitietsp.TapSo =1 AND TENSACH like '%$search%' ";
+																$result = mysqli_query($connection, $sql);
+																echo '<span> Searching </span>' ;
+															}
 														}
 
 														echo '</div>';
@@ -187,9 +192,12 @@
 										<div class="tg-widget tg-widgetsearch">
 											<form class="tg-formtheme tg-formsearch">
 												<div class="form-group">
-													<button type="submit"><i class="icon-magnifier"></i></button>
+													<form action="products.php" method="get">
+													<button type="submit" name="ok"><i class="icon-magnifier"></i></button>
 													<input type="search" name="search" class="form-group" placeholder="Search by title, author, key...">
-												</div>
+
+													</form>
+													</div>
 											</form>
 										</div>
 										<div class="tg-widget tg-catagories">
