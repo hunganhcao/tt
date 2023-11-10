@@ -103,26 +103,36 @@
 													</fieldset>
 												</form>
 												<?php
-												if (isset($_GET['id'])) {
-													$id = $_GET['id'];
-													if (!empty($id)) {
+												
+													
 														$sql = "SELECT TenSach,sanpham.SP_ID,sanpham.HinhAnh,chitietsp.GiaBan,TenTG ,TenTL,theloai.TL_ID
 														FROM sanpham  
 														join chitietsp ON sanpham.SP_ID=chitietsp.SP_ID 
 														join tacgia on sanpham.TG_ID=tacgia.TG_ID 
-														join theloai on sanpham.TL_ID=theloai.TL_ID
-														WHERE chitietsp.TapSo =1 AND sanpham.TL_ID= $id ";
+														join theloai on sanpham.TL_ID=theloai.TL_ID ";
+														if (isset($_GET['id'])) {
+														$id = $_GET['id'];
+														$sql.="WHERE chitietsp.TapSo =1 AND theloai.TL_ID= $id ";
+														
 
 														// 3. Thực thi câu truy vấn
 														$result = mysqli_query($connection, $sql);
+
 														$loai = "SELECT * FROM theloai WHERE TL_ID = $id";
 														$loaisp = mysqli_query($connection, $loai);
 														$loaisp = mysqli_fetch_array($loaisp);
-													}
-													echo '<span>' . $loaisp['TenTL'] . '</span>' .
+													
+													echo '<span>' . $loaisp['TenTL'] . '</span>' ;
+														}
+														else{
+															$result = mysqli_query($connection, $sql);
+															echo '<span> ALL </span>' ;
+														}
+														if(isset($_GET['search'])){
+															
+														}
 
-
-														'</div>';
+														echo '</div>';
 
 
 													while ($row = mysqli_fetch_array($result)) {
@@ -165,72 +175,9 @@
 															'</div>' .
 															'</div>' .
 															'</div>';
-													}
-												} else {
-													$sql = "SELECT TenSach,sanpham.SP_ID,sanpham.HinhAnh,chitietsp.GiaBan,TenTG ,TenTL,theloai.TL_ID
-														FROM sanpham  
-														join chitietsp ON sanpham.SP_ID=chitietsp.SP_ID 
-														join tacgia on sanpham.TG_ID=tacgia.TG_ID 
-														join theloai on sanpham.TL_ID=theloai.TL_ID
-														WHERE chitietsp.TapSo =1  ";
-
-													// 3. Thực thi câu truy vấn
-													$result = mysqli_query($connection, $sql);
-													$loai = "SELECT * FROM theloai WHERE TL_ID = $id";
-													$loaisp = mysqli_query($connection, $loai);
-													$loaisp = mysqli_fetch_array($loaisp);
-
-													echo '<span> ALL </span>' .
-
-
-														'</div>';
-
-
-													while ($row = mysqli_fetch_array($result)) {
-														$id = $row['SP_ID'];
-														$name = $row['TenSach'];
-														$price = $row['GiaBan'];
-														$hinh = $row['HinhAnh'];
-														$tg = $row['TenTG'];
-														$tl = $row['TenTL'];
-														$tlid=$row['TL_ID'];
-
-														echo '<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">';
-														echo '<div class="tg-postbook">';
-														echo '<a href="productdetail.php?id=' . $id . '">';
-														echo '<div >';
-														echo '<div >
-														<img src="images/books/' . $hinh . '"  style="width:200px; height: 300px;" class="img-fluid"></div>';
-
-														echo '	</div>';
-
-														echo '</a>';
-														echo '<div class="tg-postbookcontent">';
-														echo	'	<ul class="tg-bookscategories">
-							   							<li><a href="products.php?id=' . $tlid . '">' . $tl . '</a></li>
-						  								 </ul>';
-														echo '	<div class="tg-themetagbox"><span class="tg-themetag">sale</span></div>';
-														echo '<div class="tg-booktitle" >';
-														echo '	<h3><a href="productdetail.php?id=' . $id . '">' . $name . '</a></h3>' .
-															'</div>' .
-															'<span class="tg-bookwriter">By: <a href="javascript:void(0);">' . $tg . '</a></span>' .
-															'<span class="tg-stars"><span></span></span>' .
-															'<span class="tg-bookprice">' .
-															'<ins>' . $price . 'đ</ins>' .
-
-															'</span>' .
-															'<a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">' .
-															'<i class="fa fa-shopping-basket"></i>' .
-															'<em>Add To Basket</em>' .
-															'</a>' .
-															'</div>' .
-															'</div>' .
-															'</div>';
-													}
 												}
-
-												?>
-
+											
+											?>
 											</div>
 										</div>
 									</div>
