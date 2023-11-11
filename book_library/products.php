@@ -62,21 +62,7 @@
 					News Grid Start
 			*************************************-->
 			<?php
-			if (isset($_GET['id'])) {
-				$id = $_GET['id'];
-				$sql = "SELECT TenSach,sanpham.SP_ID,sanpham.HinhAnh,chitietsp.GiaBan,TenTG ,TenTL,theloai.TL_ID
-									 FROM sanpham  
-									 join chitietsp ON sanpham.SP_ID=chitietsp.SP_ID 
-									 join tacgia on sanpham.TG_ID=tacgia.TG_ID 
-									 join theloai on sanpham.TL_ID=theloai.TL_ID
-									 WHERE chitietsp.TapSo =1 AND sanpham.TL_ID= $id ";
 
-				// 3. Thực thi câu truy vấn
-				$result = mysqli_query($connection, $sql);
-				$loai = "SELECT * FROM theloai WHERE TL_ID = $id";
-				$loaisp = mysqli_query($connection, $loai);
-				$loaisp = mysqli_fetch_array($loaisp);
-			}
 			?>
 			<div class="tg-sectionspace tg-haslayout">
 				<div class="container">
@@ -88,7 +74,7 @@
 										<div class="tg-sectionhead">
 											<h2><span>People’s Choice</span>Bestselling Books</h2>
 										</div>
-										
+
 										<div class="tg-productgrid">
 											<div class="tg-refinesearch">
 
@@ -117,158 +103,195 @@
 													</fieldset>
 												</form>
 												<?php
-												echo '<span>' . $loaisp['TenTL'] . '</span>';
-												?>
+												
+													
+														$sql = "SELECT TenSach,sanpham.SP_ID,sanpham.HinhAnh,chitietsp.GiaBan,TenTG ,TenTL,theloai.TL_ID
+														FROM sanpham  
+														join chitietsp ON sanpham.SP_ID=chitietsp.SP_ID 
+														join tacgia on sanpham.TG_ID=tacgia.TG_ID 
+														join theloai on sanpham.TL_ID=theloai.TL_ID ";
+														if (isset($_GET['id'])) {
+														$id = $_GET['id'];
+														$sql.="WHERE chitietsp.TapSo =1 AND theloai.TL_ID= $id ";
+														
 
-											</div>
-											<?php
+														// 3. Thực thi câu truy vấn
+														$result = mysqli_query($connection, $sql);
 
-											while ($row = mysqli_fetch_array($result)) {
-												$id = $row['SP_ID'];
-												$name = $row['TenSach'];
-												$price = $row['GiaBan'];
-												$hinh = $row['HinhAnh'];
-												$tg = $row['TenTG'];
-												$tl = $row['TenTL'];
+														$loai = "SELECT * FROM theloai WHERE TL_ID = $id";
+														$loaisp = mysqli_query($connection, $loai);
+														$loaisp = mysqli_fetch_array($loaisp);
+													
+													echo '<span>' . $loaisp['TenTL'] . '</span>' ;
+														}
+														else{
+															$result = mysqli_query($connection, $sql);
+															echo '<span> ALL </span>' ;
+														}
+														if(isset($_REQUEST['ok'])){
+															$search=addslashes($_GET['search']);
+															if(!empty($search)){
+																$sql.="WHERE chitietsp.TapSo =1 AND TENSACH like '%$search%' ";
+																$result = mysqli_query($connection, $sql);
+																echo '<span> Searching </span>' ;
+															}
+														}
 
-												echo '<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">';
-												echo '<div class="tg-postbook">';
-												echo '<figure class="tg-featureimg"><a href="productdetail.php?id=' . $id . '">';
-												echo '<div class="tg-bookimg">';
-												echo '<div class="tg-frontcover ">
-										 <img src="images/books/' . $hinh . '"  style="width:200px; height: 300px;" class="img-fluid"></div>';
-												echo '<div class="tg-backcover"><img src="images/books/' . $hinh . '" style="width: 200px; height: 150px;" class="img-fluid"></div>';
-												echo '	</div>';
+														echo '</div>';
 
-												echo '</a></figure>';
-												echo '<div class="tg-postbookcontent">';
-												echo	'	<ul class="tg-bookscategories">
-												<li><a href="javascript:void(0);">' . $tl . '</a></li>
-											</ul>';
-												echo '	<div class="tg-themetagbox"><span class="tg-themetag">sale</span></div>';
-												echo '<div class="tg-booktitle" >';
-												echo '	<h3><a href="productdetail.php?id=' . $id . '">' . $name . '</a></h3>' .
-													'</div>' .
-													'<span class="tg-bookwriter">By: <a href="javascript:void(0);">' . $tg . '</a></span>' .
-													'<span class="tg-stars"><span></span></span>' .
-													'<span class="tg-bookprice">' .
-													'<ins>' . $price . 'đ</ins>' .
 
-													'</span>' .
-													'<a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">' .
-													'<i class="fa fa-shopping-basket"></i>' .
-													'<em>Add To Basket</em>' .
-													'</a>' .
-													'</div>' .
-													'</div>' .
-													'</div>';
-											}
+													while ($row = mysqli_fetch_array($result)) {
+														$id = $row['SP_ID'];
+														$name = $row['TenSach'];
+														$price = $row['GiaBan'];
+														$hinh = $row['HinhAnh'];
+														$tg = $row['TenTG'];
+														$tl = $row['TenTL'];
+														$tlid=$row['TL_ID'];
+
+														echo '<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">';
+														echo '<div class="tg-postbook">';
+														echo '<a href="productdetail.php?id=' . $id . '">';
+														echo '<div >';
+														echo '<div >
+								<img src="images/books/' . $hinh . '"  style="width:200px; height: 300px;" class="img-fluid"></div>';
+
+														echo '	</div>';
+
+														echo '</a>';
+														echo '<div class="tg-postbookcontent">';
+														echo	'	<ul class="tg-bookscategories">
+							   <li><a href="products.php?id=' . $tlid . '">' . $tl . '</a></li>
+						   </ul>';
+														echo '	<div class="tg-themetagbox"><span class="tg-themetag">sale</span></div>';
+														echo '<div class="tg-booktitle" >';
+														echo '	<h3><a href="productdetail.php?id=' . $id . '">' . $name . '</a></h3>' .
+															'</div>' .
+															'<span class="tg-bookwriter">By: <a href="javascript:void(0);">' . $tg . '</a></span>' .
+															'<span class="tg-stars"><span></span></span>' .
+															'<span class="tg-bookprice">' .
+															'<ins>' . $price . 'đ</ins>' .
+
+															'</span>' .
+															'<a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">' .
+															'<i class="fa fa-shopping-basket"></i>' .
+															'<em>Add To Basket</em>' .
+															'</a>' .
+															'</div>' .
+															'</div>' .
+															'</div>';
+												}
+											
 											?>
-
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-							<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 pull-left">
-								<aside id="tg-sidebar" class="tg-sidebar">
-									<div class="tg-widget tg-widgetsearch">
-										<form class="tg-formtheme tg-formsearch">
-											<div class="form-group">
-												<button type="submit"><i class="icon-magnifier"></i></button>
-												<input type="search" name="search" class="form-group" placeholder="Search by title, author, key...">
-											</div>
-										</form>
-									</div>
-									<div class="tg-widget tg-catagories">
-										<div class="tg-widgettitle">
-											<h3>Categories</h3>
+								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 pull-left">
+									<aside id="tg-sidebar" class="tg-sidebar">
+										<div class="tg-widget tg-widgetsearch">
+											<form class="tg-formtheme tg-formsearch">
+												<div class="form-group">
+													<form action="products.php" method="get">
+													<button type="submit" name="ok"><i class="icon-magnifier"></i></button>
+													<input type="search" name="search" class="form-group" placeholder="Search by title, author, key...">
+
+													</form>
+													</div>
+											</form>
 										</div>
-										<div class="tg-widgetcontent">
-											<ul>
-											<?php
+										<div class="tg-widget tg-catagories">
+											<div class="tg-widgettitle">
+												<h3>Categories</h3>
+											</div>
+											<div class="tg-widgetcontent">
+												<ul>
+												<li id="n" role="presentation">
+														<a href="products.php" >ALL</a></li>
+													<?php
 													$loai = "SELECT * FROM theloai ";
 													$loaisp = mysqli_query($connection, $loai);
-													while($row = mysqli_fetch_array($loaisp)) {                           
+													while ($row = mysqli_fetch_array($loaisp)) {
 														$id = $row['TL_ID'];
 														echo '<li id="n" role="presentation">
-														<a href="products.php?id='.$id.'" >'.$row['TenTL'].'</a></li>';
+														<a href="products.php?id=' . $id . '" >' . $row['TenTL'] . '</a></li>';
 													}
-													?>	
-											</ul>
+													?>
+												</ul>
+											</div>
 										</div>
-									</div>
 
-									<div class="tg-widget tg-widgetinstagram">
-										<div class="tg-widgettitle">
-											<h3>Instagramsssssss</h3>
+										<div class="tg-widget tg-widgetinstagram">
+											<div class="tg-widgettitle">
+												<h3>Instagramsssssss</h3>
+											</div>
+											<div class="tg-widgetcontent">
+												<ul>
+													<li>
+														<figure>
+															<img src="images/instagram/img-01.jpg" alt="image description">
+															<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>50,134</em></a></figcaption>
+														</figure>
+													</li>
+													<li>
+														<figure>
+															<img src="images/instagram/img-02.jpg" alt="image description">
+															<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>50,134</em></a></figcaption>
+														</figure>
+													</li>
+													<li>
+														<figure>
+															<img src="images/instagram/img-03.jpg" alt="image description">
+															<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>50,134</em></a></figcaption>
+														</figure>
+													</li>
+													<li>
+														<figure>
+															<img src="images/instagram/img-04.jpg" alt="image description">
+															<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>50,134</em></a></figcaption>
+														</figure>
+													</li>
+													<li>
+														<figure>
+															<img src="images/instagram/img-05.jpg" alt="image description">
+															<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>50,134</em></a></figcaption>
+														</figure>
+													</li>
+													<li>
+														<figure>
+															<img src="images/instagram/img-06.jpg" alt="image description">
+															<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>50,134</em></a></figcaption>
+														</figure>
+													</li>
+													<li>
+														<figure>
+															<img src="images/instagram/img-07.jpg" alt="image description">
+															<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>50,134</em></a></figcaption>
+														</figure>
+													</li>
+													<li>
+														<figure>
+															<img src="images/instagram/img-08.jpg" alt="image description">
+															<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>50,134</em></a></figcaption>
+														</figure>
+													</li>
+													<li>
+														<figure>
+															<img src="images/instagram/img-09.jpg" alt="image description">
+															<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>50,134</em></a></figcaption>
+														</figure>
+													</li>
+												</ul>
+											</div>
 										</div>
-										<div class="tg-widgetcontent">
-											<ul>
-												<li>
-													<figure>
-														<img src="images/instagram/img-01.jpg" alt="image description">
-														<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>50,134</em></a></figcaption>
-													</figure>
-												</li>
-												<li>
-													<figure>
-														<img src="images/instagram/img-02.jpg" alt="image description">
-														<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>50,134</em></a></figcaption>
-													</figure>
-												</li>
-												<li>
-													<figure>
-														<img src="images/instagram/img-03.jpg" alt="image description">
-														<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>50,134</em></a></figcaption>
-													</figure>
-												</li>
-												<li>
-													<figure>
-														<img src="images/instagram/img-04.jpg" alt="image description">
-														<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>50,134</em></a></figcaption>
-													</figure>
-												</li>
-												<li>
-													<figure>
-														<img src="images/instagram/img-05.jpg" alt="image description">
-														<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>50,134</em></a></figcaption>
-													</figure>
-												</li>
-												<li>
-													<figure>
-														<img src="images/instagram/img-06.jpg" alt="image description">
-														<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>50,134</em></a></figcaption>
-													</figure>
-												</li>
-												<li>
-													<figure>
-														<img src="images/instagram/img-07.jpg" alt="image description">
-														<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>50,134</em></a></figcaption>
-													</figure>
-												</li>
-												<li>
-													<figure>
-														<img src="images/instagram/img-08.jpg" alt="image description">
-														<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>50,134</em></a></figcaption>
-													</figure>
-												</li>
-												<li>
-													<figure>
-														<img src="images/instagram/img-09.jpg" alt="image description">
-														<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>50,134</em></a></figcaption>
-													</figure>
-												</li>
-											</ul>
-										</div>
-									</div>
 
-								</aside>
+									</aside>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<!--************************************
+				<!--************************************
 					News Grid End
 			*************************************-->
 		</main>
