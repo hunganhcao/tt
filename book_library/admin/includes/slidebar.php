@@ -21,6 +21,12 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="./listHDB.php">Quản lý Hóa Đơn Bán</a>
                                         </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="./khachhang.php">Quản lý Khách Hàng</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="./theloai.php">Quản lý Thể Loại</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>
