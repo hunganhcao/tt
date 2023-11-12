@@ -1,4 +1,6 @@
-<?php require('includes/header.php'); ?>
+<?php
+    require('includes/header.php');
+?>
     <div class="dashboard-wrapper">
         <div class="dashboard-ecommerce">
                 <div class="container-fluid dashboard-content ">
@@ -522,7 +524,9 @@
                     </div>
                 </div>
             </div>
-            <?php require('includes/footer.php') ?>
+            <?php
+                require('includes/footer.php');
+            ?>
         <!--  -->
 
 

@@ -10,16 +10,9 @@
                 </div>
             </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- end pageheader -->
-        <!-- ============================================================== -->
         <div class="row">
-            <!-- ============================================================== -->
-            <!-- basic table  -->
-            <!-- ============================================================== -->
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="card">
-                    <!-- <h5 class="card-header">Basic Table</h5> -->
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered first">
@@ -35,7 +28,7 @@
                                 <tbody>
                                     <?php
                                         require('../db/connect.php');
-                                        $sql_str = "Select SP_KH, TenKH, Ngaysinh, SDT, Diachi from KhachHang order by KH_ID";
+                                        $sql_str = "Select KH_ID, TenKH, Ngaysinh, SDT, Diachi from KhachHang order by KH_ID";
                                         $result = mysqli_query($conn, $sql_str);
                                         while($row = mysqli_fetch_assoc($result)){
                                     ?>
@@ -48,7 +41,7 @@
                                     </tr>
                                     <?php } ?>
                                 </tbody>
-                                <tfoot>
+                                <!-- <tfoot>
                                     <tr>
                                         <th>STT</th>
                                         <th>Tên khách hàng</th>
@@ -56,7 +49,7 @@
                                         <th>Số điện thoại</th>
                                         <th>Địa chỉ</th>
                                     </tr>
-                                </tfoot>
+                                </tfoot> -->
                             </table>
                         </div>
                     </div>

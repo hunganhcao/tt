@@ -12,10 +12,10 @@
                                 <div class="card">
                                     <h5 class="card-header">Thêm thể loại</h5>
                                     <div class="card-body">
-                                        <form action="#" id="basicform" data-parsley-validate="">
+                                        <form action="addtheloai.php" method="post" id="basicform" data-parsley-validate="">
                                             <div class="form-group">
                                                 <label for="name">Tên thể loại</label>
-                                                <input id="name" type="text" name="name" data-parsley-trigger="change" required=""  autocomplete="off" class="form-control">
+                                                <input id="name" type="text" name="name" data-parsley-trigger="change" required="" placeholder="Nhập tên thể loại..." autocomplete="off" class="form-control">
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-6 pb-2 pb-sm-4 pb-lg-0 pr-0">
@@ -40,4 +40,6 @@
             </div>
         </div>
     </div> 
-<?php require('includes/footer.php'); ?>
+<?php
+    require('includes/footer.php');
+?>
