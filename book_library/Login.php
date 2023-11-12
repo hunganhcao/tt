@@ -1,17 +1,19 @@
 <?php
     session_start();
     ob_start();
-    require("db/condbpdo.php");
-    require("db/user.php");
-
+   // require("db/condbpdo.php");
+    require(__DIR__."/user.php");
+    require(__DIR__."/db.php");
     if((isset($_POST["login"])) && ($_POST["login"])){
         $username = $_POST["username"];
         $password = $_POST["password"];
-        $roles = checkuser($username, $password);
-        $_SESSION['roles'] = $roles;
+        $roles = checkuser($username, $password,$connection);
+        $_SESSION['Roles'] = $roles;
+        echo '<script>alert('.$roles.');</script>';
         if($roles == 0) header('location: index.php');
         else if($roles == 1) header('location: admin/index.php');
         else header('location: login.php');
+        
     }
 ?>
 <!DOCTYPE html>
