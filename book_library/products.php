@@ -234,59 +234,57 @@
 			// $current_url = "$protocol://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 			
 			// Tạo liên kết đến trang trước trang đang xem 
+			 echo '<ul class="pagination" >';
 			if($page > 1){  
 			$prev = ($page - 1);  
 			//echo "<a href=\"".$current_url."?page=$prev\"><button class='trang'>Trang trước</button></a>&nbsp;";  
 			if(isset($_GET['id'])){
 				$id = $_GET['id'];
-				echo '<a href="products.php?id='.$id.'&page='.$prev.'"><button class="trang">Trang trước</button></a>';  
+				echo ' <li class="page-item"><a href="products.php?id='.$id.'&page='.$prev.'" class="page-link">Trang trước</a></li>';  
 			}else
 			if(isset($_GET['search'])){
 				$search=addslashes($_GET['search']);
 				
-					echo '<a href="products.php?search='.$search.'&page='.$prev.'"><button class="trang">Trang trước</button></a>';  
+					echo ' <li class="page-item"><a href="products.php?search='.$search.'&page='.$prev.'" class="page-link ">Trang trước</a></li>';  
 				}
 				else
-			echo '<a href="products.php?page='.$prev.'"><button class="trang">Trang trước</button></a>';  
+			echo ' <li class="page-item"><a href="products.php?page='.$prev.'" class="page-link ">Trang trước</a></li>';  
 			}  
 
 			for($i = 1; $i <= $total_pages; $i++){  
-			if(($page) == $i){  
-				if($i>1) {
-						echo "$i&nbsp;";  } 
-				
-			} else {  
+			
 				if(isset($_GET['id'])){
 					$id = $_GET['id'];
-					echo '<a href="products.php?id='.$id.'&page='.$i.'"><button class="so">'.$i.'</button></a>';  
+					echo ' <li class="page-item"><a href="products.php?id='.$id.'&page='.$i.'" class="page-link">'.$i.'</a></li>';  
 				}else
 				if(isset($_GET['search'])){
 					$search=addslashes($_GET['search']);
 					
-						echo '<a href="products.php?search='.$search.'&page='.$i.'"><button class="trang">'.$i.'</button></a>';  
+						echo ' <li class="page-item"><a href="products.php?search='.$search.'&page='.$i.'" class="page-link">'.$i.'</a></li>';  
 					}
 					else
-				echo '<a href="products.php?page='.$i.'"><button class="so">'.$i.'</button></a>';
+				echo ' <li class="page-item"><a href="products.php?page='.$i.'" class="page-link ">'.$i.'</a></li>';
  
 			}  
-			}  
+			
 
 			// Tạo liên kết đến trang tiếp theo  
 			if($page < $total_pages){  
 			$next = ($page + 1);  
 			if(isset($_GET['id'])){
 				$id = $_GET['id'];
-				echo '<a href="products.php?id='.$id.'&page='.$next.'"><button class="trang">Trang sau</button></a>';  
+				echo ' <li class="page-item"><a href="products.php?id='.$id.'&page='.$next.'" class="page-link" >Trang sau</a></li>';  
 			}else
 			if(isset($_GET['search'])){
 				$search=addslashes($_GET['search']);
 				
-					echo '<a href="products.php?search='.$search.'&page='.$next.'"><button class="trang">Trang sau</button></a>';  
+					echo ' <li class="page-item"><a href="products.php?search='.$search.'&page='.$next.'" class="page-link" >Trang sau</a></li>';  
 				}
 				else
-			echo '<a href="products.php?page='.$next.'"><button class="trang">Trang sau</button></a>';
+			echo ' <li class="page-item"><a href="products.php?page='.$next.'" class="page-link" >Trang sau</a></li>';
 
 			}  
+			echo '</ul>';
 
 	?>
 	</div>
