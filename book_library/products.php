@@ -132,12 +132,17 @@
 															$result = mysqli_query($connection, $sql);
 															echo '<span> ALL </span>' ;
 														}
-														if(isset($_REQUEST['ok'])){
+														if(isset($_GET['search'])){
 															$search=addslashes($_GET['search']);
 															if(!empty($search)){
 																$sql.="AND TENSACH like '%$search%' ";
 																$result = mysqli_query($connection, $sql);
 																echo '<span> Searching </span>' ;
+															}
+															else{
+																
+																$result = mysqli_query($connection, $sql);
+
 															}
 														}
 														if(!isset($_GET['page'])){  
@@ -211,7 +216,7 @@
 				$id = $_GET['id'];
 				$pagesql.="AND sanpham.TL_ID= $id ";
 			}
-			if(isset($_REQUEST['ok'])){
+			if(isset($_GET['search'])){
 				$search=addslashes($_GET['search']);
 				if(!empty($search)){
 					$pagesql.="AND TENSACH like '%$search%' ";}}
@@ -236,6 +241,12 @@
 				$id = $_GET['id'];
 				echo '<a href="products.php?id='.$id.'&page='.$prev.'"><button class="trang">Trang trước</button></a>';  
 			}else
+			if(isset($_GET['search'])){
+				$search=addslashes($_GET['search']);
+				
+					echo '<a href="products.php?search='.$search.'&page='.$prev.'"><button class="trang">Trang trước</button></a>';  
+				}
+				else
 			echo '<a href="products.php?page='.$prev.'"><button class="trang">Trang trước</button></a>';  
 			}  
 
@@ -249,6 +260,12 @@
 					$id = $_GET['id'];
 					echo '<a href="products.php?id='.$id.'&page='.$i.'"><button class="so">'.$i.'</button></a>';  
 				}else
+				if(isset($_GET['search'])){
+					$search=addslashes($_GET['search']);
+					
+						echo '<a href="products.php?search='.$search.'&page='.$i.'"><button class="trang">'.$i.'</button></a>';  
+					}
+					else
 				echo '<a href="products.php?page='.$i.'"><button class="so">'.$i.'</button></a>';
  
 			}  
@@ -261,6 +278,12 @@
 				$id = $_GET['id'];
 				echo '<a href="products.php?id='.$id.'&page='.$next.'"><button class="trang">Trang sau</button></a>';  
 			}else
+			if(isset($_GET['search'])){
+				$search=addslashes($_GET['search']);
+				
+					echo '<a href="products.php?search='.$search.'&page='.$next.'"><button class="trang">Trang sau</button></a>';  
+				}
+				else
 			echo '<a href="products.php?page='.$next.'"><button class="trang">Trang sau</button></a>';
 
 			}  
@@ -275,8 +298,8 @@
 										<div class="tg-widget tg-widgetsearch">
 											<form class="tg-formtheme tg-formsearch">
 												<div class="form-group">
-													<form action="$current_url" method="get">
-													<button type="submit" name="ok"><i class="icon-magnifier"></i></button>
+													<form action="products.php" method="get">
+													<button type="submit" ><i class="icon-magnifier"></i></button>
 													<input type="search" name="search" class="form-group" placeholder="Search by title, author, key...">
 
 													</form>
