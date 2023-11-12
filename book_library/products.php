@@ -225,12 +225,18 @@
 			// Tính tổng số trang. Làm tròn lên sử dụng ceil()  
 			$total_pages = ceil($total_results / $max_results);  
 
-			$protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
-			$current_url = "$protocol://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+			// $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+			// $current_url = "$protocol://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+			
 			// Tạo liên kết đến trang trước trang đang xem 
 			if($page > 1){  
 			$prev = ($page - 1);  
-			echo "<a href=\"".$current_url."?page=$prev\"><button class='trang'>Trang trước</button></a>&nbsp;";  
+			//echo "<a href=\"".$current_url."?page=$prev\"><button class='trang'>Trang trước</button></a>&nbsp;";  
+			if(isset($_GET['id'])){
+				$id = $_GET['id'];
+				echo '<a href="products.php?id='.$id.'&page='.$prev.'"><button class="trang">Trang trước</button></a>';  
+			}else
+			echo '<a href="products.php?page='.$prev.'"><button class="trang">Trang trước</button></a>';  
 			}  
 
 			for($i = 1; $i <= $total_pages; $i++){  
@@ -239,17 +245,26 @@
 						echo "$i&nbsp;";  } 
 				
 			} else {  
-			echo "<a href=\"".$current_url."?page=$i\"><button class='so'>$i</button></a>&nbsp;";  
+				if(isset($_GET['id'])){
+					$id = $_GET['id'];
+					echo '<a href="products.php?id='.$id.'&page='.$i.'"><button class="so">'.$i.'</button></a>';  
+				}else
+				echo '<a href="products.php?page='.$i.'"><button class="so">'.$i.'</button></a>';
+ 
 			}  
 			}  
 
 			// Tạo liên kết đến trang tiếp theo  
 			if($page < $total_pages){  
 			$next = ($page + 1);  
-			echo "<a href=\"".$current_url."?page=$next\"><button class='trang'>Trang sau</button></a>";  
+			if(isset($_GET['id'])){
+				$id = $_GET['id'];
+				echo '<a href="products.php?id='.$id.'&page='.$next.'"><button class="trang">Trang sau</button></a>';  
+			}else
+			echo '<a href="products.php?page='.$next.'"><button class="trang">Trang sau</button></a>';
+
 			}  
-			echo "</center>";  		
-		
+
 	?>
 	</div>
 
