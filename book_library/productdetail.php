@@ -1,4 +1,43 @@
+<?php
+		//session_start();
+		//if(!isset($_SESSION['cart'])) $_SESSION['cart']=[];
+		//lấy dữ liệu từ form	
+		if(isset($_POST['addcart'])&&($_POST['addcart'])){
+			$img = $_POST['img'];
+			$tensp = $_POST['tensp'];
+			$price = $_POST['price'];
+			$quantity = 1;
+			 
+			$select_cart = mysqli_query($conn, "SELECT sanpham.TenSach,sanpham.HinhAnh,chitietsp.GiaBan,chitietgh.SoLuong
+			FROM sanpham  
+			join chitietsp ON sanpham.SP_ID=chitietsp.SP_ID 
+			join chitietgh on chitietsp.CTSP_ID=chitietgh.CTSP_ID 
+			
+			WHERE chitietsp.TapSo =1  ");
+			if(mysqli_num_rows($select_cart)>0){
+				$message[] = 'product alredy added to cart' ;
+			}else{
+				$insert_cart = mysqli_query($conn,"INSERT INTO 'chitietgh'(SoLuong) Values('$quantity')");
+				$message[] = 'product added to cart successfully!' ;
+			}
 
+			 //kiem tra sp co trong gio hang khong
+			//for($i = 0; $i< sizeof($_SESSION['cart']); $i++){
+			//	if($_SESSION['cart'][$i][1] == $tensp){
+					
+			//	}
+			}
+			
+
+			// khởi tạo mảng trước khi đưa vào giỏ hàng
+			//$item =[$img,$tensp,$price];
+			//$_SESSION['cart'][]=$item;
+			//var_dump($_SESSION['cart']);
+			
+		//}
+
+		
+		?>
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -130,7 +169,7 @@
 															<input type="hidden" value="'.$name.'" name="tensp" >
 															<input type="hidden" value="'.$hinh.'" name="img" >
 															<input type="hidden" value="'.$price.'" name="price" >
-															
+															<input type="hidden" value="1" name="quantity" >
 														</div>
 
 									  					</form>';

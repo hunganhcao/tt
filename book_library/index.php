@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html class="no-js" lang="">
 
@@ -37,7 +38,47 @@
 		<!--************************************
 					Best Selling Start
 			*************************************-->
+			<?php
+		//session_start();
+		//if(!isset($_SESSION['cart'])) $_SESSION['cart']=[];
+		//lấy dữ liệu từ form	
+		@include 'db.php';
+		if(isset($_GET['addcart'])){
+			$img = $_GET['img'];
+			$tensp = $_GET['tensp'];
+			$price = $_GET['price'];
+			$quantity = 1;
+			 
+			$select_cart = mysqli_query($connection, "SELECT sanpham.TenSach,sanpham.HinhAnh,chitietsp.GiaBan,chitietgh.SoLuong
+			FROM chitietsp  
+			join sanpham ON sanpham.SP_ID=chitietsp.SP_ID 
+			join chitietgh on chitietsp.CTSP_ID=chitietgh.CTSP_ID 
+			
+			WHERE sanpham.TenSach =  $tensp ");
+			if(mysqli_num_rows($select_cart)>0){
+				$message[] = 'product alredy added to cart' ;
+			}else{
+				$insert_cart = mysqli_query($connection,"INSERT INTO 'chitietgh'(SoLuong) Values('$quantity')");
+				$message[] = 'product added to cart successfully!' ;
+			}
+
+			 //kiem tra sp co trong gio hang khong
+			//for($i = 0; $i< sizeof($_SESSION['cart']); $i++){
+			//	if($_SESSION['cart'][$i][1] == $tensp){
+					
+			//	}
+			}
+			
+
+			// khởi tạo mảng trước khi đưa vào giỏ hàng
+			//$item =[$img,$tensp,$price];
+			//$_SESSION['cart'][]=$item;
+			//var_dump($_SESSION['cart']);
+			
+		//}
+
 		
+		?>
 		<section class="tg-sectionspace tg-haslayout">
 			<div class="container">
 				<div class="row">
@@ -93,10 +134,8 @@
 									'<ins>' . $price . 'đ</ins>' .
 
 									'</span>' .
-									'<form action="cart.php" method="post">	
+									'<form action="" method="post">	
 										<div class="tg-quantityholder">
-															
-											<input type="number" class="result" value="1" min="1" max="10" id="quantity1" name="quantity">
 															
 						
 											<input class="tg-btn tg-active tg-btn-lg" type="submit" value="Add To Basket" name="addcart">
