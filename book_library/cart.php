@@ -1,6 +1,17 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- molla/cart.html  22 Nov 2019 09:55:06 GMT -->
+
+
+<body>
+    <?php
+	include(__DIR__."/header.php");
+	?>
 <?php
-		session_start();
-		ob_start();
+		
 		if(!isset($_SESSION['cart'])) $_SESSION['cart']=[];
 		if(isset($_GET['delid'])&&($_GET['delid']>=0)){
 			array_splice($_SESSION['cart'],$_GET['delid'],1);
@@ -68,18 +79,6 @@
 			}
 		}
 		?>
-<!DOCTYPE html>
-<html lang="en">
-
-
-<!-- molla/cart.html  22 Nov 2019 09:55:06 GMT -->
-
-
-<body>
-    <?php
-	include(__DIR__."/header.php");
-	?>
-
         <main class="main">
         	<div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
         		<div class="container">
@@ -171,15 +170,8 @@
 
 	                				<table class="table table-summary">
 	                					<tbody>
-	                						
-
-	                						
-	                						
-
-	                						
-
 	                						<tr class="summary-shipping-estimate">
-	                							<td> <a href="dashboard.html">Checkout</a></td>
+	                							<td> <input class="tg-btn tg-active" href="checkout.php" type="submit" value="Checkout" name="thanhtoan"></td>
 	                						
 	                						</tr><!-- End .summary-shipping-estimate -->
 
