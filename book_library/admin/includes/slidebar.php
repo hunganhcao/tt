@@ -27,6 +27,12 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="./theloai.php">Quản lý Thể Loại</a>
                                         </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="./nhaxuatban.php">Quản lý Nhà Xuất Bản</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="./tacgia.php">Quản lý Tác Giả</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>

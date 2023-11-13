@@ -6,10 +6,10 @@
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="page-header">
-                    <h2 class="pageheader-title">Danh sách thể loại</h2>
+                    <h2 class="pageheader-title">Danh sách nhà xuất bản</h2>
                 </div>
                 <div class="aside-compose" style="width: 30%;">
-                    <a class="btn btn-lg btn-secondary btn-block" href="./themtheloai.php">Thêm thể loại</a>
+                    <a class="btn btn-lg btn-secondary btn-block" href="./themnxb.php">Thêm NXB</a>
                 </div>
             </div>
         </div>
@@ -22,23 +22,23 @@
                                 <thead>
                                     <tr>
                                         <th>STT</th>
-                                        <th>Tên thể loại</th>
+                                        <th>Tên NXB</th>
                                         <th>Operation</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
                                         require('../db/connect.php');
-                                        $sql_str = "Select TL_ID, TenTL from TheLoai order by TL_ID";
+                                        $sql_str = "Select NXB_ID, TenNXB from Nhaxuatban order by NXB_ID";
                                         $result = mysqli_query($conn, $sql_str);
                                         while($row = mysqli_fetch_assoc($result)){
                                     ?>
                                     <tr>
-                                        <td><?=$row['TL_ID']?></td>
-                                        <td><?=$row['TenTL']?></td>
+                                        <td><?=$row['NXB_ID']?></td>
+                                        <td><?=$row['TenNXB']?></td>
                                         <td>
-                                            <a href="edittheloai.php?TL_ID=<?=$row['TL_ID']?>">Sửa</a> | 
-                                            <a href="deletetheloai.php?TL_ID=<?=$row['TL_ID']?>" onclick="return confirm('Bạn chắc chắn muốn xóa mục này?');">Xóa</a>
+                                            <a href="editnxb.php?NXB_ID=<?=$row['NXB_ID']?>">Sửa</a> | 
+                                            <a href="deletenxb.php?NXB_ID=<?=$row['NXB_ID']?>" onclick="return confirm('Bạn chắc chắn muốn xóa mục này?');">Xóa</a>
                                         </td>
                                     </tr>
                                     <?php } ?>

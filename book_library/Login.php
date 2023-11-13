@@ -10,8 +10,8 @@
         $roles = checkuser($username, $password,$connection);
         $_SESSION['Roles'] = $roles;
         echo '<script>alert('.$roles.');</script>';
-        if($roles == 0) header('location: index.php');
-        else if($roles == 1) header('location: admin/index.php');
+        if($roles == 1) header('location: index.php');
+        else if($roles == 0) header('location: admin/index.php');
         else header('location: login.php');
         
     }
