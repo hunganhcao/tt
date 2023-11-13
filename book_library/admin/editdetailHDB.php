@@ -4,21 +4,21 @@
     $sp_id = $_GET['HDB_ID'];
     //
     require('../db/connect.php');
-    $sql_str = "Select * from chitiethdb where HDB_ID = $sp_id";
+    $sql_str = "Select * from chitiethdb where HDB_ID = $sp_id and CTSP_ID='$ctsp_id'";
     $res = mysqli_query($conn, $sql_str);
     // $res1 = mysqli_query($conn, $sql_str2);
     $chitiet = mysqli_fetch_assoc($res);
     // $info = mysqli_fetch_assoc($res1);
-    if(isset($_POST['ctsp'])){
+    if(isset($_GET['HDB_ID'])){
         $sp_id = $_GET['HDB_ID'];
-        $ctsp = $_POST['ctsp'];
+        $ctsp = $_GET['CTSP_ID'];
         $soluong = $_POST['soluong'];
 
     }
 
         if(isset($_POST['btnUpdate'])){
             $sql_str1 = "update chitiethdb 
-            set HDB_ID='$sp_id', SoLuong='$soluong', CTSP_ID='$ctsp' where HDB_ID = $sp_id";
+            set HDB_ID='$sp_id', SoLuong='$soluong', CTSP_ID='$ctsp' where HDB_ID = $sp_id and CTSP_ID='$ctsp'";
             mysqli_query($conn, $sql_str1);
             // echo $sql_str1;
             header("location: detailHDB.php?HDB_ID=$sp_id");
@@ -51,10 +51,6 @@
                                         }
                                         ?>
                                     <form action="#" method="post" id="basicform">
-                                        <div class="form-group">
-                                            <label for="name">ID Chi Tiết Sản Phẩm</label>
-                                            <input type="number" name="ctsp" value="<?php echo $chitiet['CTSP_ID']?>" required="" class="form-control">
-                                        </div>
                                         <div class="form-group">
                                             <label for="name">Số lượng</label>
                                             <input type="number" name="soluong" value="<?php echo $chitiet['SoLuong']?>" required="" class="form-control">
