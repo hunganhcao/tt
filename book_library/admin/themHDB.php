@@ -14,35 +14,34 @@
                         <!-- ============================================================== -->
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="card">
-                                <h5 class="card-header">Thêm Sản Phẩm</h5>
+                                <h5 class="card-header">Thêm Hóa Đơn Bán</h5>
                                 <div class="card-body">
-                                    <form action="addproducts.php" method="post" id="basicform" enctype="multipart/form-data">
+                                    <form action="addHDB.php" method="post" id="basicform" enctype="multipart/form-data">
                                         <div class="form-group">
-                                            <label for="name">Tên sách</label>
-                                            <input id="name" type="text" name="name" data-parsley-trigger="change" required=""  autocomplete="off" class="form-control">
+                                            <label for="name">Ngày Bán</label>
+                                            <input type="datetime-local" name="ngayban" required="" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                            <label for="image">Hình Ảnh</label>
-                                            <input id="image" type="file" name="image" data-parsley-trigger="change" required="" autocomplete="off" class="form-control">
-                                        </div>
-                                         
-                                        <div class="form-group">
-                                            <label class="col-12 col-sm-1 col-form-label text-sm-right">Mô Tả</label>
+                                            <label class="col-12 col-sm-1 col-form-label text-sm-right">Ghi Chú</label>
                                             <div class="col-12 col-sm-6 col-lg-12">
-                                                <textarea id="mota" name="mota" class="form-control"></textarea>
+                                                <textarea name="ghichu" class="form-control"></textarea>
                                             </div>
                                         </div><br>
                                         <div class="form-group">
-                                            <label for="nxb">Nhà Xuất Bản</label>
-                                            <select class="form-control" name="nxb" id="nxb" required>
-                                                <option disabled selected>Chọn nhà xuất bản</option>
+                                            <label for="name">Tổng Tiền</label>
+                                            <input type="number" name="tongtien" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="nxb">Khách Hàng</label>
+                                            <select class="form-control" name="kh" required>
+                                                <option disabled selected></option>
                                             <?php
                                                 require('../db/connect.php');
-                                                $sql_str = "Select * from nhaxuatban order by TenNXB";
+                                                $sql_str = "Select * from khachhang order by TenKH";
                                                 $result = mysqli_query($conn, $sql_str);
                                                 while($row = mysqli_fetch_assoc($result)){
                                                     ?>
-                                                        <option value="<?php echo $row['NXB_ID'] ?>"><?php echo $row['TenNXB'] ?></option>
+                                                        <option value="<?php echo $row['KH_ID'] ?>"><?php echo $row['TenKH'] ?></option>
                                             <?php
                                                     // echo $row["SP_ID"];
                                                 }
@@ -51,16 +50,16 @@
                                             <!-- <input id="nxb"  type="Text" required="" placeholder="" class="form-control"> -->
                                         </div>
                                         <div class="form-group">
-                                            <label for="tacgia">Tác Giả</label>
-                                            <select class="form-control" name="tacgia" id="tacgia" required>
-                                            <option disabled selected>Chọn Tác Giả</option>
+                                            <label for="tacgia">Nhân Viên</label>
+                                            <select class="form-control" name="nv" required>
+                                            <option disabled selected></option>
                                             <?php
                                                 require('../db/connect.php');
-                                                $sql_str = "Select * from tacgia order by TenTG";
+                                                $sql_str = "Select * from nhanvien order by TenNV";
                                                 $result = mysqli_query($conn, $sql_str);
                                                 while($row = mysqli_fetch_assoc($result)){
                                                     ?>
-                                                        <option value="<?php echo $row['TG_ID'] ?>"><?php echo $row['TenTG'] ?></option> 
+                                                        <option value="<?php echo $row['NV_ID'] ?>"><?php echo $row['TenNV'] ?></option> 
                                                                                              
                                             <?php
                                                     // echo $row["SP_ID"];
@@ -70,16 +69,16 @@
                                             <!-- <input id="tacgia"  type="Text" required="" placeholder="" class="form-control"> -->
                                         </div>
                                         <div class="form-group">
-                                            <label for="theloai">Thể Loại</label>
-                                            <select class="form-control" name="theloai" id="theloai" required>
-                                            <option disabled selected>Chọn Thể Loại</option>
+                                            <label for="theloai">Thanh Toán</label>
+                                            <select class="form-control" name="tt" required>
+                                            <option disabled selected></option>
                                             <?php
                                                 require('../db/connect.php');
-                                                $sql_str = "Select * from theloai order by TenTL";
+                                                $sql_str = "Select * from thanhtoan order by PhuongThuc";
                                                 $result = mysqli_query($conn, $sql_str);
                                                 while($row = mysqli_fetch_assoc($result)){
                                                     ?>
-                                                        <option value="<?php echo $row['TL_ID'] ?>"><?php echo $row['TenTL'] ?></option> 
+                                                        <option value="<?php echo $row['TT_ID'] ?>"><?php echo $row['PhuongThuc'] ?></option> 
                                                                                              
                                             <?php
                                                     // echo $row["SP_ID"];
@@ -97,7 +96,7 @@
                                             <div class="col-sm-6 pl-0">
                                                 <p class="text-right">
                                                     <button type="submit" class="btn btn-space btn-primary">Submit</button>
-                                                    <a href="listbooks.php" class="btn btn-space btn-secondary">Cancel</a>
+                                                    <a href="listHDB.php" class="btn btn-space btn-secondary">Cancel</a>
                                                 </p>
                                             </div>
                                         </div>
