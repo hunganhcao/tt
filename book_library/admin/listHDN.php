@@ -9,7 +9,7 @@
                             <div class="page-header">
                                 <!-- <h2 class="pageheader-title">Danh Sách Sản Phẩm </h2> -->
                                 <div class="aside-compose" style="width: 30%; padding-left: 0;" >
-                                <a class="btn btn-lg btn-secondary btn-block" href="./themHDB.php">Thêm Sản Phẩm</a></div>
+                                <a class="btn btn-lg btn-secondary btn-block" href="./themHDN.php">Thêm Hóa Đơn Nhập</a></div>
                                
                                
                 <div class="row">

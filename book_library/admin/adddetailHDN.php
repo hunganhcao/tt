@@ -18,11 +18,11 @@
                                 <div class="card-body">
                                     <?php
                                         require('../db/connect.php');
-                                        if(isset($_GET['HDB_ID'])){
-                                            $sp_id = $_GET['HDB_ID'];  
+                                        if(isset($_GET['HDN_ID'])){
+                                            $sp_id = $_GET['HDN_ID'];  
                                         }
                                         ?>
-                                    <form action="themchitietHDB.php?HDB_ID=<?php echo $sp_id?>" method="post" id="basicform">
+                                    <form action="themchitietHDN.php?HDN_ID=<?php echo $sp_id?>" method="post" id="basicform">
                                         <div class="form-group">
                                             <label for="name">ID Chi Tiết Sản Phẩm</label>
                                             <input type="number" name="ctsp" required="" class="form-control">
@@ -40,7 +40,7 @@
                                             <div class="col-sm-6 pl-0">
                                                 <p class="text-right">
                                                     <button type="submit" class="btn btn-space btn-primary">Submit</button>
-                                                    <a href="detailHDB.php?HDB_ID=<?=$sp_id?>" class="btn btn-space btn-secondary">Cancel</a>
+                                                    <a href="detailHDN.php?HDN_ID=<?=$sp_id?>" class="btn btn-space btn-secondary">Cancel</a>
                                                 </p>
                                             </div>
                                         </div>
