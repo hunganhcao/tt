@@ -41,6 +41,7 @@
                 <div class="group">
                     <a href="#">Foget Password</a>
                     <a href="#">Sign Up</a>
+                    <!-- <a href="signup.php">Sign Up</a> -->
                 </div>
             </div>
         </form>
