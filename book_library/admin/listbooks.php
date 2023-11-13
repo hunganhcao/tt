@@ -1,5 +1,5 @@
 <?php 
-    require('includes/header.php');
+    require('./includes/header.php');
 ?>
     <div class="dashboard-wrapper">
         <div class="dashboard-ecommerce">
@@ -115,5 +115,5 @@
     </div>
 </div>
 </div>
-<?php require('includes/footer.php'); ?>
+<?php require('./includes/footer.php'); ?>
 
