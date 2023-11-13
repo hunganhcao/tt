@@ -8,6 +8,8 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
                                 <!-- <h2 class="pageheader-title">Danh Sách Sản Phẩm </h2> -->
+                                <div class="aside-compose" style="width: 30%; padding-left: 0;" >
+                                <a class="btn btn-lg btn-secondary btn-block" href="./themHDB.php">Thêm Sản Phẩm</a></div>
                                
                                
                 <div class="row">
@@ -37,11 +39,13 @@
                                         <thead>
                                             <tr>
                                                 <th>HDN_ID</th>
-                                                <th>NgayNhap</th>
+                                                <th>Ngày Nhập</th>
                                                 <!-- <th>GhiChu</th> -->
-                                                <th>TenNV</th>
-                                                <th>TongTien</th>
-                                                <!-- <th>Operation</th> -->
+                                                <th>Tên NV</th>
+                                                <th>Tổng Tiền</th>
+                                                <th>Chi Tiết</th>
+                                                <th>Sửa</th>
+                                                <th>Xóa</th>
                                             </tr>
                                         </thead>
                                     <tbody>
@@ -77,6 +81,10 @@
                                         <td><?=$row['NgayNhap']?></td>
                                         <td><?=$row['TenNV']?></td>
                                         <td><?=$row['TongTien']?></td>
+                                        <td><a href="detailHDN.php?HDN_ID=<?=$row['HDN_ID']?>" class="btn btn-space btn-success">VIEW</a></td>
+                                        <td><a href="editHDN.php?HDN_ID=<?=$row['HDN_ID']?>" class="btn btn-space btn-warning">EDIT</a></td>
+                                        <td><a href="deleteHDN.php?HDN_ID=<?=$row['HDN_ID']?>" class="btn btn-space btn-danger" 
+                                            onclick="return confirm('Bạn chắc chắn muốn xóa mục này?');">DELETE</a></td> 
                                         <!-- <td>EDIT | DELETE</td> -->
                                         
                                     </tr>

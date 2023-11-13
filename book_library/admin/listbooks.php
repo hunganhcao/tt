@@ -89,7 +89,7 @@
                                             <tr>
                                                 <!-- <td><?=$row['SP_ID']?></td> -->
                                                 <td><?=$row['TenSach']?></td>
-                                                <td><img src="upload/<?=$row['HinhAnh']?>" alt="" width="200px"></td>
+                                                <td><img src="upload/<?=$row['HinhAnh']?>" alt="" width="100px"></td>
                                                 <td><?=$row['TenNXB']?></td>
                                                 <td><?=$row['TenTG']?></td>
                                                 <td><?=$row['TenTL']?></td>

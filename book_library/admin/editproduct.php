@@ -68,7 +68,7 @@
                                         <div class="form-group">
                                             <label for="image">Hình Ảnh</label>
                                             <input id="image" type="file" name="image" value="<?php echo $tensach['HinhAnh']?>"   class="form-control">
-                                            <img src="upload/<?php echo $tensach['HinhAnh']?>" alt="" style="width:200px;">
+                                            <img src="upload/<?php echo $tensach['HinhAnh']?>" alt="" style="width:100px;">
                                         </div>
                                         <div class="form-group">
                                             <label class="col-12 col-sm-1 col-form-label text-sm-right">Mô Tả</label>

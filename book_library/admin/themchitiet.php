@@ -1,6 +1,6 @@
 <?php 
 require('../db/connect.php');
-if(isset($_GET['SP_ID'])){
+if(isset($_POST['tapso'])){
     $sp_id = $_GET['SP_ID'];
     $tapso = $_POST['tapso'];
     $soluong = $_POST['soluong'];

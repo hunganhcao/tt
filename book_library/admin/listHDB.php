@@ -8,6 +8,8 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
                                 <!-- <h2 class="pageheader-title">Danh Sách Sản Phẩm </h2> -->
+                                <div class="aside-compose" style="width: 30%; padding-left: 0;" >
+                                <a class="btn btn-lg btn-secondary btn-block" href="./themHDB.php">Thêm Sản Phẩm</a></div>
                                
                                
                 <div class="row">
@@ -42,6 +44,9 @@
                                                 <th>TenNV</th>
                                                 <th>PhuongThuc</th>
                                                 <th>TongTien</th>
+                                                <th>Chi Tiết</th>
+                                                <th>Sửa</th>
+                                                <th>Xóa</th>
                                                 <!-- <th>Operation</th> -->
                                             </tr>
                                         </thead>
@@ -55,24 +60,24 @@
                                                     $sql_str = "Select HDB_ID,NgayBan,TongTien,khachhang.TenKH,nhanvien.TenNV,thanhtoan.PhuongThuc from hoadonban 
                                                     join khachhang on khachhang.KH_ID = hoadonban.KH_ID
                                                     join nhanvien on nhanvien.NV_ID = hoadonban.NV_ID
-                                                    join thanhtoan on thanhtoan.TT_ID = hoadonban.KH_ID $where
+                                                    join thanhtoan on thanhtoan.TT_ID = hoadonban.TT_ID $where
                                                     order by HDB_ID LIMIT $item_per_page Offset $offset";
                                                     $record = mysqli_query($conn, "Select HDB_ID,NgayBan,TongTien,khachhang.TenKH,nhanvien.TenNV,thanhtoan.PhuongThuc from hoadonban 
                                                     join khachhang on khachhang.KH_ID = hoadonban.KH_ID
                                                     join nhanvien on nhanvien.NV_ID = hoadonban.NV_ID
-                                                    join thanhtoan on thanhtoan.TT_ID = hoadonban.KH_ID $where
+                                                    join thanhtoan on thanhtoan.TT_ID = hoadonban.TT_ID $where
                                                     order by HDB_ID");
                                                     $result = mysqli_query($conn, $sql_str);
                                                 }else{
                                                     $sql_str = "Select HDB_ID,NgayBan,TongTien,khachhang.TenKH,nhanvien.TenNV,thanhtoan.PhuongThuc from hoadonban 
                                                     join khachhang on khachhang.KH_ID = hoadonban.KH_ID
                                                     join nhanvien on nhanvien.NV_ID = hoadonban.NV_ID
-                                                    join thanhtoan on thanhtoan.TT_ID = hoadonban.KH_ID 
+                                                    join thanhtoan on thanhtoan.TT_ID = hoadonban.TT_ID 
                                                     order by HDB_ID LIMIT $item_per_page Offset $offset";
                                                     $record = mysqli_query($conn, "Select HDB_ID,NgayBan,TongTien,khachhang.TenKH,nhanvien.TenNV,thanhtoan.PhuongThuc from hoadonban 
                                                     join khachhang on khachhang.KH_ID = hoadonban.KH_ID
                                                     join nhanvien on nhanvien.NV_ID = hoadonban.NV_ID
-                                                    join thanhtoan on thanhtoan.TT_ID = hoadonban.KH_ID 
+                                                    join thanhtoan on thanhtoan.TT_ID = hoadonban.TT_ID 
                                                     order by HDB_ID");
                                                     $result = mysqli_query($conn, $sql_str);
                                                 }
@@ -89,6 +94,10 @@
                                                 <td><?=$row['TenNV']?></td>
                                                 <td><?=$row['PhuongThuc']?></td>
                                                 <td><?=$row['TongTien']?></td>
+                                                <td><a href="detailHDB.php?HDB_ID=<?=$row['HDB_ID']?>" class="btn btn-space btn-success">VIEW</a></td>
+                                                <td><a href="editHDB.php?HDB_ID=<?=$row['HDB_ID']?>" class="btn btn-space btn-warning">EDIT</a></td>
+                                                <td><a href="deleteHDB.php?HDB_ID=<?=$row['HDB_ID']?>" class="btn btn-space btn-danger" 
+                                                    onclick="return confirm('Bạn chắc chắn muốn xóa mục này?');">DELETE</a></td> 
                                                 <!-- <td>EDIT | DELETE</td> -->
                                                 
                                             </tr>
