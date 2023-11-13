@@ -109,10 +109,14 @@
 														FROM sanpham  
 														join chitietsp ON sanpham.SP_ID=chitietsp.SP_ID 
 														join tacgia on sanpham.TG_ID=tacgia.TG_ID 
-														join theloai on sanpham.TL_ID=theloai.TL_ID ";
+														join theloai on sanpham.TL_ID=theloai.TL_ID 
+														WHERE chitietsp.TapSo =1 
+														";
+														
+
 														if (isset($_GET['id'])) {
 														$id = $_GET['id'];
-														$sql.="WHERE chitietsp.TapSo =1 AND theloai.TL_ID= $id ";
+														$sql.="AND theloai.TL_ID= $id ";
 														
 
 														// 3. Thực thi câu truy vấn
@@ -122,24 +126,41 @@
 														$loaisp = mysqli_query($connection, $loai);
 														$loaisp = mysqli_fetch_array($loaisp);
 													
-													echo '<span>' . $loaisp['TenTL'] . '</span>' ;
+														echo '<span>' . $loaisp['TenTL'] . '</span>' ;
 														}
 														else{
 															$result = mysqli_query($connection, $sql);
 															echo '<span> ALL </span>' ;
 														}
-														if(isset($_REQUEST['ok'])){
+														if(isset($_GET['search'])){
 															$search=addslashes($_GET['search']);
 															if(!empty($search)){
-																$sql.="WHERE chitietsp.TapSo =1 AND TENSACH like '%$search%' ";
+																$sql.="AND TENSACH like '%$search%' ";
 																$result = mysqli_query($connection, $sql);
 																echo '<span> Searching </span>' ;
 															}
+															else{
+																
+																$result = mysqli_query($connection, $sql);
+
+															}
 														}
+														if(!isset($_GET['page'])){  
+															$page = 1;  
+															} else {  
+															$page = $_GET['page'];  
+															}  
+													
+															// Chọn số kết quả trả về trong mỗi trang mặc định là 10 
+															$max_results = 8;  
+													
+															// Tính số thứ tự giá trị trả về của đầu trang hiện tại 
+															$from = (($page * $max_results) - $max_results);  
+															$sql.="LIMIT $from,$max_results";
+															$result = mysqli_query($connection, $sql);
+
 
 														echo '</div>';
-
-
 													while ($row = mysqli_fetch_array($result)) {
 														$id = $row['SP_ID'];
 														$name = $row['TenSach'];
@@ -186,14 +207,97 @@
 											</div>
 										</div>
 									</div>
+									<div id="phantrang_sp">
+	
+	<?php
+			// Tính tổng kết quả trong toàn DB:  
+			$pagesql="SELECT COUNT(*) as Num FROM sanpham join chitietsp ON sanpham.SP_ID=chitietsp.SP_ID WHERE chitietsp.TapSo =1 ";
+			if(isset($_GET['id'])){
+				$id = $_GET['id'];
+				$pagesql.="AND sanpham.TL_ID= $id ";
+			}
+			if(isset($_GET['search'])){
+				$search=addslashes($_GET['search']);
+				if(!empty($search)){
+					$pagesql.="AND TENSACH like '%$search%' ";}}
+			$ketqua =  mysqli_query($connection,$pagesql );  
+			while($row = mysqli_fetch_assoc($ketqua)) {
+				$total_results = $row['Num'];
+
+			 }
+
+			
+			// Tính tổng số trang. Làm tròn lên sử dụng ceil()  
+			$total_pages = ceil($total_results / $max_results);  
+
+			// $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+			// $current_url = "$protocol://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+			
+			// Tạo liên kết đến trang trước trang đang xem 
+			 echo '<ul class="pagination" >';
+			if($page > 1){  
+			$prev = ($page - 1);  
+			//echo "<a href=\"".$current_url."?page=$prev\"><button class='trang'>Trang trước</button></a>&nbsp;";  
+			if(isset($_GET['id'])){
+				$id = $_GET['id'];
+				echo ' <li class="page-item"><a href="products.php?id='.$id.'&page='.$prev.'" class="page-link">Trang trước</a></li>';  
+			}else
+			if(isset($_GET['search'])){
+				$search=addslashes($_GET['search']);
+				
+					echo ' <li class="page-item"><a href="products.php?search='.$search.'&page='.$prev.'" class="page-link ">Trang trước</a></li>';  
+				}
+				else
+			echo ' <li class="page-item"><a href="products.php?page='.$prev.'" class="page-link ">Trang trước</a></li>';  
+			}  
+
+			for($i = 1; $i <= $total_pages; $i++){  
+			
+				if(isset($_GET['id'])){
+					$id = $_GET['id'];
+					echo ' <li class="page-item"><a href="products.php?id='.$id.'&page='.$i.'" class="page-link">'.$i.'</a></li>';  
+				}else
+				if(isset($_GET['search'])){
+					$search=addslashes($_GET['search']);
+					
+						echo ' <li class="page-item"><a href="products.php?search='.$search.'&page='.$i.'" class="page-link">'.$i.'</a></li>';  
+					}
+					else
+				echo ' <li class="page-item"><a href="products.php?page='.$i.'" class="page-link ">'.$i.'</a></li>';
+ 
+			}  
+			
+
+			// Tạo liên kết đến trang tiếp theo  
+			if($page < $total_pages){  
+			$next = ($page + 1);  
+			if(isset($_GET['id'])){
+				$id = $_GET['id'];
+				echo ' <li class="page-item"><a href="products.php?id='.$id.'&page='.$next.'" class="page-link" >Trang sau</a></li>';  
+			}else
+			if(isset($_GET['search'])){
+				$search=addslashes($_GET['search']);
+				
+					echo ' <li class="page-item"><a href="products.php?search='.$search.'&page='.$next.'" class="page-link" >Trang sau</a></li>';  
+				}
+				else
+			echo ' <li class="page-item"><a href="products.php?page='.$next.'" class="page-link" >Trang sau</a></li>';
+
+			}  
+			echo '</ul>';
+
+	?>
+	</div>
+
 								</div>
+								
 								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 pull-left">
 									<aside id="tg-sidebar" class="tg-sidebar">
 										<div class="tg-widget tg-widgetsearch">
 											<form class="tg-formtheme tg-formsearch">
 												<div class="form-group">
 													<form action="products.php" method="get">
-													<button type="submit" name="ok"><i class="icon-magnifier"></i></button>
+													<button type="submit" ><i class="icon-magnifier"></i></button>
 													<input type="search" name="search" class="form-group" placeholder="Search by title, author, key...">
 
 													</form>
