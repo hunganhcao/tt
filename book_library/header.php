@@ -16,6 +16,12 @@
 	<link rel="stylesheet" href="css/color.css">
 	<link rel="stylesheet" href="css/responsive.css">
 	<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	
 	<?php
     require(__DIR__."/db.php");
 	session_start();
@@ -68,31 +74,25 @@
 								</ul>
 							</div>
 							<div class="tg-userlogin">
-							<div class="dropdown">
-							<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<div class="dropdown">
+							<button class="btn btn-secondary dropdown-toggle"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 								<span>Hi, <?php
 											if (isset($_SESSION['username']) && $_SESSION['username']) {
 												$username = $_SESSION['username'];
 												echo  $username;
 											}
 											?></span>
-							</a>
+							</button>
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								<ul>
-								<li class="dropdown-item"><a  href="Login.php">dang nhap</a></li>
-								<li class="dropdown-item"><a  href="dangky.php">dang ky</a></li>
-								<li class="dropdown-item"><a  href="dangxuat.php">dang xuat</a></li>
+								<ul class="custom-list">
+								<a  href="Login.php"><li class="dropdown-item custom-list-item">Đăng Nhập</li></a>
+								<a  href="dangky.php"><li class="dropdown-item custom-list-item">Đăng Ký</li></a>
+								<a  href="dangxuat.php"><li class="dropdown-item custom-list-item">Đăng Xuất</li></a>
 								</ul>
 								
 							</div>
 						</div>
-								<!-- <figure><a href="javascript:void(0);"><img src="images/users/img-01.jpg" alt="image description"></a></figure>
-								<span>Hi, <?php
-								if(isset($_SESSION['username']) && $_SESSION['username']){
-									$username=$_SESSION['username'];
-									echo  $username;
-								}
-								?></span> -->
+						
 							</div>
 						</div>
 					</div>
