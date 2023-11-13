@@ -93,10 +93,24 @@
 									'<ins>' . $price . 'đ</ins>' .
 
 									'</span>' .
-									'<a class="tg-btn tg-btnstyletwo" href="cart.php?id=' . $id . '">' .
-									'<i class="fa fa-shopping-basket"></i>' .
-									'<em>Add To Basket</em>' .
-									'</a>' .
+									'<form action="cart.php" method="post">	
+										<div class="tg-quantityholder">
+															
+											<input type="number" class="result" value="1" min="1" max="10" id="quantity1" name="quantity">
+															
+						
+											<input class="tg-btn tg-active tg-btn-lg" type="submit" value="Add To Basket" name="addcart">
+
+										</div>
+										<div>
+											<input type="hidden" value="'.$id.'" name="id" >
+											<input type="hidden" value="'.$name.'" name="tensp" >
+											<input type="hidden" value="'.$hinh.'" name="img" >
+											<input type="hidden" value="'.$price.'" name="price" >
+															
+										</div>
+
+									</form>'.
 									'</div>' .
 									'</div>' .
 									'</div>';

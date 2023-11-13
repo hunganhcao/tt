@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -74,16 +75,16 @@
 										<div class="row">
 											<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 												<?php
-												if(isset($_GET['id'])){
+												if(isset($_GET['id']))
 													$id = $_GET['id'];
 												$sql = "SELECT TenSach,sanpham.SP_ID,sanpham.HinhAnh,sanpham.MoTa,chitietsp.GiaBan,TenTG ,TenTL,theloai.TL_ID,TenNXB,
-												chitietsp.SoTrang,chitietsp.NamXB
+												chitietsp.SoTrang,chitietsp.NamXB,chitietsp.TapSo
 												FROM sanpham  
 												join chitietsp ON sanpham.SP_ID=chitietsp.SP_ID 
 												join tacgia on sanpham.TG_ID=tacgia.TG_ID 
 												join theloai on sanpham.TL_ID=theloai.TL_ID
 												join nhaxuatban on sanpham.NXB_ID=nhaxuatban.NXB_ID
-												WHERE sanpham.SP_ID =".$id."";}
+												WHERE sanpham.SP_ID =".$id."";
 				
 									   // 3. Thực thi câu truy vấn
 									   $result = mysqli_query($connection, $sql);
@@ -100,6 +101,7 @@
 										   $SoTrang = $row['SoTrang'];
 										   $namxb = $row['NamXB'];
 										   $mota = $row['MoTa'];
+										   $tapso = $row['TapSo'];
 												echo'<div class="tg-postbook">';
 												echo	'<figure class="tg-featureimg"><img src="images/books/' . $hinh . '"  style="width:200px; height: 300px;" alt="image description"></figure>';
 												echo	'<div class="tg-postbookcontent">';
@@ -112,14 +114,26 @@
 															<li><i class="icon-rocket"></i><span>Free delivery worldwide</span></li>
 															<li><i class="icon-checkmark-circle"></i><span>Dispatch from the USA in 2 working days </span></li>
 															<li><i class="icon-store"></i><span>Status: <em>In Stock</em></span></li>
-														</ul>';
-												echo		'<div class="tg-quantityholder">
-															<em class="minus">-</em>
-															<input type="text" class="result" value="0" id="quantity1" name="quantity">
-															<em class="plus">+</em>
-														</div>';
-												echo		'<a class="tg-btn tg-active tg-btn-lg" href="cart.php?id=' . $id . '">Add To Basket</a>';
+														</ul>
+														<form action="cart.php" method="post">	
+														<div class="tg-quantityholder">
+															
+															<input type="number" class="result" value="1" min="1" max="10" id="quantity1" name="quantity">
+															
+														</div>
+														<div>
+															<input class="tg-btn tg-active tg-btn-lg" type="submit" value="Add To Basket" name="addcart">
 
+														</div>
+												 		<div>
+														 	<input type="hidden" value="'.$id.'" name="id" >
+															<input type="hidden" value="'.$name.'" name="tensp" >
+															<input type="hidden" value="'.$hinh.'" name="img" >
+															<input type="hidden" value="'.$price.'" name="price" >
+															
+														</div>
+
+									  					</form>';
 												echo	'</div>';
 												echo '</div>'.
 											'</div>'.
@@ -130,11 +144,11 @@
 													'</ul>'.
 													'<div class="tg-themetagbox"><span class="tg-themetag">sale</span></div>'.
 													'<div class="tg-booktitle">'.
-														'<h3>'.$name.'</h3>'.
+														'<h3>'.$name.' ( Tập '.$tapso.' )</h3>'.
 													'</div>'.
 													'<span class="tg-bookwriter">By: <a href="javascript:void(0);">'.$tg.'</a></span>'.
-													'<span class="tg-stars"><span></span></span>'.
-													'<span class="tg-addreviews"><a href="javascript:void(0);">Add Your Review</a></span>'.
+													
+													'<button class="btn btn-default btn-xs">1</button>'.
 													'<div class="tg-share">'.
 														'<span>Share:</span>'.
 														'<ul class="tg-socialicons">
@@ -146,8 +160,8 @@
 														</ul>'.
 													'</div>'.
 													'<div class="tg-description">'.
-														'<p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore etdoloreat magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laborisi nisi ut aliquip ex ea commodo consequat aute.</p>'.
-														'<p>Arure dolor in reprehenderit in voluptate velit esse cillum dolore fugiat nulla aetur excepteur sint occaecat cupidatat non proident, sunt in culpa quistan officia serunt mollit anim id est laborum sed ut perspiciatis unde omnis iste natus... <a href="javascript:void(0);">More</a></p>'.
+														'<p>'.$mota.'.</p>'.
+														
 													'</div>'.
 													'<div class="tg-sectionhead">'.
 														'<h2>Product Details</h2>'.
@@ -155,18 +169,17 @@
 													'<ul class="tg-productinfo">
 														<li><span>Format:</span><span>'.$tl.'</span></li>
 														<li><span>Pages:</span><span>'.$SoTrang.' pages</span></li>
-														
+
 														<li><span>Publication Year:</span><span>'.$namxb.'</span></li>
 														<li><span>Publisher:</span><span>'.$nxb.'</span></li>
-														<li><span>Language:</span><span>English</span></li>
-														<li><span>Illustrations note:</span><span>'.$mota.'</span></li>
+														<li><span>Language:</span><span>Vietnamese</span></li>
+														
 														
 														<li><span>Other Fomate:</span><span>CD-Audio, Paperback, E-Book</span></li>
 													</ul>'.
 
-												'</div>';
-									   			}
-												?>
+												'</div>';}?>
+									   	
 											</div>
 											<div class="tg-productdescription">
 												<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
