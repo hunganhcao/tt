@@ -18,6 +18,8 @@
 	<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 	<?php
     require(__DIR__."/db.php");
+	session_start();
+	ob_start() ;
     ?>
 </head>
 <header id="tg-header" class="tg-header tg-haslayout">
@@ -66,8 +68,31 @@
 								</ul>
 							</div>
 							<div class="tg-userlogin">
-								<figure><a href="javascript:void(0);"><img src="images/users/img-01.jpg" alt="image description"></a></figure>
-								<span>Hi, John</span>
+							<div class="dropdown">
+							<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span>Hi, <?php
+											if (isset($_SESSION['username']) && $_SESSION['username']) {
+												$username = $_SESSION['username'];
+												echo  $username;
+											}
+											?></span>
+							</a>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								<ul>
+								<li class="dropdown-item"><a  href="Login.php">dang nhap</a></li>
+								<li class="dropdown-item"><a  href="dangky.php">dang ky</a></li>
+								<li class="dropdown-item"><a  href="dangxuat.php">dang xuat</a></li>
+								</ul>
+								
+							</div>
+						</div>
+								<!-- <figure><a href="javascript:void(0);"><img src="images/users/img-01.jpg" alt="image description"></a></figure>
+								<span>Hi, <?php
+								if(isset($_SESSION['username']) && $_SESSION['username']){
+									$username=$_SESSION['username'];
+									echo  $username;
+								}
+								?></span> -->
 							</div>
 						</div>
 					</div>

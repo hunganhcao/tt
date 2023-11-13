@@ -13,7 +13,8 @@
         }
     }
     if(empty($_POST['nxb']) || empty($_POST['tacgia']) || empty($_POST['theloai'])){ 
-            header("location: themsanpham.php");
+        echo '<script>alert("Bạn chưa nhập đủ thông tin");</script>';
+        echo '<script>window.location.href = document.referrer;</script>';
     }else{
         $sql_str = "INSERT into `sanpham` (`TenSach`,`HinhAnh`,`MoTa`, `NXB_ID`,`TG_ID`,`TL_ID`)
         values ('$name', '$fileName','$mota',$nxb,$tacgia,$theloai);";
