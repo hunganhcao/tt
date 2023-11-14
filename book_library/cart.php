@@ -10,7 +10,75 @@
     <?php
 	include(__DIR__."/header.php");
 	?>
+<?php
+		
+		if(!isset($_SESSION['cart'])) $_SESSION['cart']=[];
+		if(isset($_GET['delid'])&&($_GET['delid']>=0)){
+			array_splice($_SESSION['cart'],$_GET['delid'],1);
+		}
+		//lấy dữ liệu từ form	
+		if(isset($_POST['addcart'])&&($_POST['addcart'])){
+			$img = $_POST['img'];
+			$tensp = $_POST['tensp'];
+			$price = $_POST['price'];
+			$soluong = $_POST['soluong'];
+			
+			$fl = 0;// biến kiểm tra sản phẩm có trùng hay ko
+			// kiem tra sp co trong gio hang khong
+			for($i = 0; $i< sizeof($_SESSION['cart']); $i++){
+				if($_SESSION['cart'][$i][1] == $tensp){
+					$fl =1;
+					$soluongnew = $soluong+$_SESSION['cart'][$i][3];
+					$_SESSION['cart'][$i][3] = $soluongnew;
+					break;
+				}
+			}
 
+
+			// khởi tạo mảng trước khi đưa vào giỏ hàng và nếu sp không trùng thì thêm mới 
+			if($fl == 0){
+			$item =[$img,$tensp,$price,$soluong];
+			
+			$_SESSION['cart'][]=$item;
+			//var_dump($_SESSION['cart']);
+		}
+		}
+		function showcart(){
+			if(isset($_SESSION['cart'])&& (is_array($_SESSION['cart']))){
+				$tong = 0;
+				for($i = 0; $i< sizeof($_SESSION['cart']); $i++){
+					$tt = (int)$_SESSION['cart'][$i][2] * (int)$_SESSION['cart'][$i][3];
+					$tong += $tt; 
+					echo '<tr>
+					<td> '.($i+1).'</td>
+					<td class="product-col">
+						<div class="product">
+							<figure class="product-media">
+								<a href="#">
+									<img src="images/books/' . $_SESSION['cart'][$i][0] . '"  style="width:100px; height: 110px;" alt="Product image">
+								</a>
+							</figure>
+
+							<h3 class="product-title">
+								<a href="#">'. $_SESSION['cart'][$i][1].'</a>
+							</h3><!-- End .product-title -->
+						</div><!-- End .product -->
+					</td>
+					<td class="price-col">'. $_SESSION['cart'][$i][2].'</td>
+					<td >'.$_SESSION['cart'][$i][3].'</td>
+					<td class="total-col">'.$tt.'</td>
+					<td >
+					 <a href="cart.php?delid='.$i.'">Xoa</a>
+					</td>
+				</tr>';
+				}
+				echo '<tr >
+							<th colspan = "4">Total:</th>
+							<th>'.$tong.'</th>
+						</tr>';
+			}
+		}
+		?>
         <main class="main">
         	<div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
         		<div class="container">
@@ -37,8 +105,12 @@
 										</tr>
 									</thead>
 								
+										<?php
 										
-										<tbody>
+											showcart();
+
+										?>
+										<!--<tbody>
 										<tr>
 											<td class="product-col">
 												<div class="product">
@@ -84,79 +156,26 @@
                                             </td>
 											<td class="total-col">$76.00</td>
 											<td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button></td>
-										</tr> 
+										</tr> -->
 									</tbody>
 								</table><!-- End .table table-wishlist -->
 
 	                			<div class="cart-bottom">
-			            			<div class="cart-discount">
-			            				<form action="#">
-			            					<div class="input-group">
-				        						<input type="text" class="form-control" required placeholder="coupon code">
-				        						<div class="input-group-append">
-													<button class="btn btn-outline-primary-2" type="submit"><i class="icon-long-arrow-right"></i></button>
-												</div><!-- .End .input-group-append -->
-			        						</div><!-- End .input-group -->
-			            				</form>
-			            			</div><!-- End .cart-discount -->
-
-			            			<a href="#" class="btn btn-outline-dark-2"><span>UPDATE CART</span><i class="icon-refresh"></i></a>
+									<a href="index.php" class="btn btn-outline-dark-2"><span>Continue shopping</span><i class="icon-refresh"></i></a>
 		            			</div><!-- End .cart-bottom -->
 	                		</div><!-- End .col-lg-9 -->
 	                		<aside class="col-lg-3">
 	                			<div class="summary summary-cart">
-	                				<h3 class="summary-title">Cart Total</h3><!-- End .summary-title -->
+	                				<h3 class="summary-title"></h3><!-- End .summary-title -->
 
 	                				<table class="table table-summary">
 	                					<tbody>
-	                						<tr class="summary-subtotal">
-	                							<td>Subtotal:</td>
-	                							<td>$160.00</td>
-	                						</tr><!-- End .summary-subtotal -->
-	                						<tr class="summary-shipping">
-	                							<td>Shipping:</td>
-	                							<td>&nbsp;</td>
-	                						</tr>
-
-	                						<tr class="summary-shipping-row">
-	                							<td>
-													<div class="custom-control custom-radio">
-														<input type="radio" id="free-shipping" name="shipping" class="custom-control-input">
-														<label class="custom-control-label" for="free-shipping">Free Shipping</label>
-													</div><!-- End .custom-control -->
-	                							</td>
-	                							<td>$0.00</td>
-	                						</tr><!-- End .summary-shipping-row -->
-
-	                						<tr class="summary-shipping-row">
-	                							<td>
-	                								<div class="custom-control custom-radio">
-														<input type="radio" id="standart-shipping" name="shipping" class="custom-control-input">
-														<label class="custom-control-label" for="standart-shipping">Standart:</label>
-													</div><!-- End .custom-control -->
-	                							</td>
-	                							<td>$10.00</td>
-	                						</tr><!-- End .summary-shipping-row -->
-
-	                						<tr class="summary-shipping-row">
-	                							<td>
-	                								<div class="custom-control custom-radio">
-														<input type="radio" id="express-shipping" name="shipping" class="custom-control-input">
-														<label class="custom-control-label" for="express-shipping">Express:</label>
-													</div><!-- End .custom-control -->
-	                							</td>
-	                							<td>$20.00</td>
-	                						</tr><!-- End .summary-shipping-row -->
-
 	                						<tr class="summary-shipping-estimate">
-	                							<td>Estimate for Your Country<br> <a href="dashboard.html">Change address</a></td>
-	                							<td>&nbsp;</td>
+	                							<td> <input class="tg-btn tg-active" href="checkout.php" type="submit" value="Checkout" name="thanhtoan"></td>
+	                						
 	                						</tr><!-- End .summary-shipping-estimate -->
 
-	                						<tr class="summary-total">
-	                							<td>Total:</td>
-	                							<td>$160.00</td>
-	                						</tr><!-- End .summary-total -->
+	                						
 	                					</tbody>
 	                				</table><!-- End .table table-summary -->
 									

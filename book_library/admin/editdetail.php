@@ -4,7 +4,7 @@
     $sp_id = $_GET['SP_ID'];
     //
     require('../db/connect.php');
-    $sql_str = "Select * from chitietsp where CTSP_ID = $ctsp_id";
+    $sql_str = "Select * from chitietsp where CTSP_ID = $ctsp_id and SP_ID= $sp_id";
     $res = mysqli_query($conn, $sql_str);
     // $res1 = mysqli_query($conn, $sql_str2);
     $chitiet = mysqli_fetch_assoc($res);
@@ -96,7 +96,7 @@
                                             <div class="col-sm-6 pl-0">
                                                 <p class="text-right">
                                                     <button type="submit" class="btn btn-space btn-primary" name="btnUpdate">Update</button>
-                                                    <a href="detailproduct.php" class="btn btn-space btn-secondary">Cancel</a>
+                                                    <a href="detailproduct.php?SP_ID=<?=$sp_id?>" class="btn btn-space btn-secondary">Cancel</a>
                                                 </p>
                                             </div>
                                         </div>

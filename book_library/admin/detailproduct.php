@@ -4,6 +4,9 @@
     if(isset($_GET['SP_ID'])){
         $id = $_GET['SP_ID'];
     }
+    // $check = "Select * from chitietsp where SP_ID = $id";
+    // $res = mysqli_query($conn, $check);
+
 ?>
     <div class="dashboard-wrapper">
         <div class="dashboard-ecommerce">
@@ -57,6 +60,7 @@
                                         </thead>
                                     <tbody>
                                         <?php
+                                            
                                             $sp_id = $_GET['SP_ID'];
                                             $item_per_page = !empty($_GET['per_page'])?$_GET['per_page']:4;
                                             $current_page = !empty($_GET['page'])?$_GET['page']:1; 
