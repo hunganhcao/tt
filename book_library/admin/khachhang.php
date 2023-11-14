@@ -50,9 +50,9 @@
                                             $result = mysqli_query($conn, $sql_str);
                                             $record = mysqli_query($conn, "SELECT KH_ID, TenKH, Ngaysinh, SDT, Diachi FROM KhachHang $where ORDER BY KH_ID");
                                         } else {
-                                            $sql_str = "Select KH_ID, TenKH, Ngaysinh, SDT, Diachi from KhachHang order by KH_ID LIMIT $item_per_page Offset $offset";
+                                            $sql_str = "SELECT KH_ID, TenKH, Ngaysinh, SDT, Diachi from KhachHang order by KH_ID LIMIT $item_per_page Offset $offset";
                                             $result = mysqli_query($conn, $sql_str);
-                                            $record = mysqli_query($conn,"Select KH_ID, TenKH, Ngaysinh, SDT, Diachi from KhachHang order by KH_ID");
+                                            $record = mysqli_query($conn,"SELECT KH_ID, TenKH, Ngaysinh, SDT, Diachi from KhachHang order by KH_ID");
                                         }
                                         $totalRecords = $record->num_rows;
                                         $totalpage = ceil($totalRecords/$item_per_page);
