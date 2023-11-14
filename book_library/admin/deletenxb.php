@@ -10,6 +10,6 @@
         header("location: nhaxuatban.php");
 
     }else{
-        echo "Không thể xóa thể loại này";
+        echo "Không thể xóa nhà xuất bản này";
     }
 ?>

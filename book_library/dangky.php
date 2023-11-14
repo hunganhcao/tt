@@ -32,7 +32,7 @@ if (isset($_SESSION['username']) && $_SESSION['username']){
             <input id="ngaysinh" type="date" name="NgaySinh" size="50" /></p></td></tr>
             <tr><td>
             <input type="submit" name="dangky" value="Đăng ký" onclick=" return KiemTra()" />
-            <a href="/dangnhap.php"> Đăng nhập </a>
+            <a href="Login.php"> Đăng nhập </a>
             </td></tr>
         </table>
     </form>
