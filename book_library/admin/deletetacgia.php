@@ -10,6 +10,6 @@
         header("location: theloai.php");
 
     }else{
-        echo "Không thể xóa thể loại này";
+        echo "Không thể xóa tác giả này";
     }
 ?>

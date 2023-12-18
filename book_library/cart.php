@@ -82,7 +82,7 @@
         <main class="main">
         	<div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
         		<div class="container">
-        			<h1 class="page-title">Shopping Cart<span>Shop</span></h1>
+        			<h1 class="page-title">Shopping Cart</h1>
         		</div><!-- End .container -->
         	</div><!-- End .page-header -->
             
@@ -171,8 +171,9 @@
 	                				<table class="table table-summary">
 	                					<tbody>
 	                						<tr class="summary-shipping-estimate">
+											<form action="checkout.php" method="post">	
 	                							<td> <input class="tg-btn tg-active" href="checkout.php" type="submit" value="Checkout" name="thanhtoan"></td>
-	                						
+											</form>
 	                						</tr><!-- End .summary-shipping-estimate -->
 
 	                						

@@ -1,14 +1,17 @@
 <?php
-    $id = $_GET("TL_ID");
+    $id = $_GET['TL_ID'];
     require("../db/connect.php");
-    $sql_str = "Select * from TheLoai where TL_ID = $id";
+    $sql_str = "SELECT * FROM TheLoai where TL_ID = $id";
     $result = mysqli_query($conn, $sql_str);
     $kq = mysqli_fetch_assoc($result);
     if(isset($_POST['name'])){
+        $id = $_GET['TL_ID'];
         $name = $_POST['name'];
     }
-    if(isset($_POST['btnUpdate'])){
-        $sql = "UPDATE TheLoai SET TenTL = '$name' WHERE TL_ID = $id";
+    if(isset($_POST['luu'])){
+        $sql = "UPDATE TheLoai SET TL_ID = '$id', TenTL = '$name' WHERE TL_ID = $id";
+        mysqli_query($conn, $sql);
+        header("location: theloai.php");
     } else {
     require("includes/header.php");
 ?>
