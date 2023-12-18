@@ -13,26 +13,16 @@
                                 <div id="submenu-1" class="collapse submenu">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="./listbooks.php">Quản lý Sản Phẩm</a>
+                                            <a class="nav-link" href="./listtrees.php">Quản lý Sản Phẩm</a>
                                         </li>
-                                        <li class="nav-item">
+                                        <!-- <li class="nav-item">
                                             <a class="nav-link" href="./listHDN.php">Quản lý Hóa Đơn Nhập</a>
-                                        </li>
+                                        </li> -->
                                         <li class="nav-item">
                                             <a class="nav-link" href="./listHDB.php">Quản lý Hóa Đơn Bán</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="./khachhang.php">Quản lý Khách Hàng</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="./theloai.php">Quản lý Thể Loại</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="./nhaxuatban.php">Quản lý Nhà Xuất Bản</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="./tacgia.php">Quản lý Tác Giả</a>
-                                        </li>
+                                      
+                                      
                                     </ul>
                                 </div>
                             </li>

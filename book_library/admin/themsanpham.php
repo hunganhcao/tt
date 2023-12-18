@@ -18,7 +18,7 @@
                                 <div class="card-body">
                                     <form action="addproducts.php" method="post" id="basicform" enctype="multipart/form-data">
                                         <div class="form-group">
-                                            <label for="name">Tên sách</label>
+                                            <label for="name">Tên Cây</label>
                                             <input id="name" type="text" name="name" data-parsley-trigger="change" required=""  autocomplete="off" class="form-control">
                                         </div>
                                         <div class="form-group">
@@ -33,6 +33,23 @@
                                             </div>
                                         </div><br>
                                         <div class="form-group">
+                                            <label for="name">Số lượng</label>
+                                            <input id="name" type="number" name="amount" data-parsley-trigger="change" required=""  autocomplete="off" class="form-control">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6 pb-2 pb-sm-4 pb-lg-0 pr-0">
+                                                <!-- <label class="be-checkbox custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input"><span class="custom-control-label">Remember me</span>
+                                                </label> -->
+                                            </div>
+                                            <div class="col-sm-6 pl-0">
+                                                <p class="text-right">
+                                                    <button type="submit" class="btn btn-space btn-primary">Submit</button>
+                                                    <a href="listtrees.php" class="btn btn-space btn-secondary">Cancel</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="form-group">
                                             <label for="nxb">Nhà Xuất Bản</label>
                                             <select class="form-control" name="nxb" id="nxb" required>
                                                 <option disabled selected>Chọn nhà xuất bản</option>
@@ -48,9 +65,9 @@
                                                 }
                                             ?>
                                             </select>
-                                            <!-- <input id="nxb"  type="Text" required="" placeholder="" class="form-control"> -->
-                                        </div>
-                                        <div class="form-group">
+                                            <input id="nxb"  type="Text" required="" placeholder="" class="form-control"> -->
+                                       <!--  </div> -->
+                                        <!-- <div class="form-group">
                                             <label for="tacgia">Tác Giả</label>
                                             <select class="form-control" name="tacgia" id="tacgia" required>
                                             <option disabled selected>Chọn Tác Giả</option>
@@ -66,9 +83,9 @@
                                                     // echo $row["SP_ID"];
                                                 }
                                             ?>
-                                            </select>
+                                            </select>-->
                                             <!-- <input id="tacgia"  type="Text" required="" placeholder="" class="form-control"> -->
-                                        </div>
+                                       <!-- </div>
                                         <div class="form-group">
                                             <label for="theloai">Thể Loại</label>
                                             <select class="form-control" name="theloai" id="theloai" required>
@@ -86,21 +103,9 @@
                                                 }
                                             ?>
                                             </select>
-                                            <!-- <input id="theloai"  type="text" required="" placeholder="" class="form-control"> -->
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6 pb-2 pb-sm-4 pb-lg-0 pr-0">
-                                                <!-- <label class="be-checkbox custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input"><span class="custom-control-label">Remember me</span>
-                                                </label> -->
-                                            </div>
-                                            <div class="col-sm-6 pl-0">
-                                                <p class="text-right">
-                                                    <button type="submit" class="btn btn-space btn-primary">Submit</button>
-                                                    <a href="listbooks.php" class="btn btn-space btn-secondary">Cancel</a>
-                                                </p>
-                                            </div>
-                                        </div>
+                                             <input id="theloai"  type="text" required="" placeholder="" class="form-control"> -->
+                                        <!--</div> -->
+                                        
                                     </form>
                                 </div>
                             </div>

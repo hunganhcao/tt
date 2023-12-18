@@ -1,8 +1,8 @@
 <?php 
     require('includes/header.php');
     require('../db/connect.php');
-    if(isset($_GET['SP_ID'])){
-        $id = $_GET['SP_ID'];
+    if(isset($_GET['Cay_ID'])){
+        $id = $_GET['Cay_ID'];
     }
     // $check = "Select * from chitietsp where SP_ID = $id";
     // $res = mysqli_query($conn, $check);
@@ -45,50 +45,46 @@
                                         <thead>
                                             <tr>
                                                 <!-- <th>SP_ID</th> -->
-                                                <th>TenSach</th>
-                                                <th>TapSo</th>
-                                                <th>SoLuong</th>
-                                                <th>SoTrang</th>
+                                                <th>TenCay</th>                                               
+                                                <th>ChiTietThu</th>
+                                                <th>TrangThai</th>
                                                 <th>HinhAnh</th>
-                                                <th>NamXB</th>
                                                 <th>GiaNhap</th>
                                                 <th>GiaBan</th>
-                                                <th>Sửa</th>
-                                                <th>Xóa</th>
-
+                                                
                                             </tr>
                                         </thead>
                                     <tbody>
                                         <?php
                                             
-                                            $sp_id = $_GET['SP_ID'];
+                                            $sp_id = $id;
                                             $item_per_page = !empty($_GET['per_page'])?$_GET['per_page']:4;
                                             $current_page = !empty($_GET['page'])?$_GET['page']:1; 
                                             $offset = ($current_page - 1) * $item_per_page;
                                             if($search){
-                                                $sql_str = "Select chitietsp.SP_ID, CTSP_ID, TenSach,chitietsp.HinhAnh,TapSo,SoLuong, SoTrang, NamXB, GiaNhap,GiaBan
+                                                $sql_str = "Select chitietsp.SP_ID, CTSP_ID, TenSach,chitietsp.HinhAnh,TapSo, SoTrang, NamXB, GiaNhap,GiaBan
                                                 from chitietsp
                                                 join sanpham on chitietsp.SP_ID = sanpham.SP_ID
                                                 where $where and chitietsp.SP_ID = $sp_id
                                                 order by CTSP_ID LIMIT $item_per_page Offset $offset";
                                                 $result = mysqli_query($conn, $sql_str); 
-                                                $record = mysqli_query($conn, "Select chitietsp.SP_ID, CTSP_ID, TenSach,chitietsp.HinhAnh,TapSo,SoLuong, SoTrang, NamXB, GiaNhap,GiaBan
+                                                $record = mysqli_query($conn, "Select chitietsp.SP_ID, CTSP_ID, TenSach,chitietsp.HinhAnh,TapSo, SoTrang, NamXB, GiaNhap,GiaBan
                                                 from chitietsp
                                                 join sanpham on chitietsp.SP_ID = sanpham.SP_ID
                                                 where $where and chitietsp.SP_ID = $sp_id
                                                 order by CTSP_ID");
                                             }else{
-                                                $sql_str = "Select chitietsp.SP_ID, CTSP_ID, TenSach,chitietsp.HinhAnh,TapSo,SoLuong, SoTrang, NamXB, GiaNhap,GiaBan
+                                                $sql_str = "Select chitietsp.Cay_ID,TenCay, ChiTietThu,Tem,TrangThai, chitietsp.HinhAnh, GiaNhap,GiaBan
                                                 from chitietsp
-                                                join sanpham on chitietsp.SP_ID = sanpham.SP_ID
-                                                where chitietsp.SP_ID = $sp_id
-                                                order by CTSP_ID LIMIT $item_per_page Offset $offset";
+                                                join Cay on chitietsp.Cay_ID = Cay.Cay_ID
+                                                where chitietsp.Cay_ID = $sp_id
+                                                order by ChiTietThu LIMIT $item_per_page Offset $offset";
                                                 $result = mysqli_query($conn, $sql_str);  
-                                                $record = mysqli_query($conn, "Select chitietsp.SP_ID, CTSP_ID, TenSach,chitietsp.HinhAnh,TapSo,SoLuong, SoTrang, NamXB, GiaNhap,GiaBan
+                                                $record = mysqli_query($conn, "Select chitietsp.Cay_ID,TenCay, ChiTietThu,Tem,TrangThai, chitietsp.HinhAnh, GiaNhap,GiaBan
                                                 from chitietsp
-                                                join sanpham on chitietsp.SP_ID = sanpham.SP_ID
-                                                where chitietsp.SP_ID = $sp_id
-                                                order by CTSP_ID");
+                                                join Cay on chitietsp.Cay_ID = Cay.Cay_ID
+                                                where chitietsp.Cay_ID = $sp_id
+                                                order by ChiTietThu");
                                             }
                                             $totalRecords = $record->num_rows;
                                             $totalpage = ceil($totalRecords/$item_per_page);
@@ -97,18 +93,18 @@
                                         
                                             <tr>
                                                 <!-- <td><?=$row['SP_ID']?></td> -->
-                                                <td><?=$row['TenSach']?></td>
-                                                <td><?=$row['TapSo']?></td>
-                                                <td><?=$row['SoLuong']?></td>
-                                                <td><?=$row['SoTrang']?></td>
+                                                <td><?=$row['TenCay']?></td>
+                                                <th><?=$row['Tem']?></th>
+                                               
+                                                <td><?=$row['TrangThai']?></td>
                                                 <td><img src="upload/<?=$row['HinhAnh']?>" alt="" width="100px"></td>
-                                                <th><?=$row['NamXB']?></th>
+                                                
                                                 <th><?=$row['GiaNhap']?></th>
                                                 <th><?=$row['GiaBan']?></th>
                                                 <!-- <td><a href="adddetail.php?&SP_ID=<?=$row['SP_ID']?>" class="btn btn-space btn-success">ADD</a></td> -->
-                                                <td><a href="editdetail.php?SP_ID=<?=$row['SP_ID']?>&CTSP_ID=<?=$row['CTSP_ID']?>" class="btn btn-space btn-warning">EDIT</a></td>
+                                                <!-- <td><a href="editdetail.php?SP_ID=<?=$row['SP_ID']?>&CTSP_ID=<?=$row['CTSP_ID']?>" class="btn btn-space btn-warning">EDIT</a></td>
                                                 <td><a href="deletedetail.php?SP_ID=<?=$row['SP_ID']?>&CTSP_ID=<?=$row['CTSP_ID']?>" class="btn btn-space btn-danger" 
-                                                    onclick="return confirm('Bạn chắc chắn muốn xóa mục này?');">DELETE</a></td> 
+                                                    onclick="return confirm('Bạn chắc chắn muốn xóa mục này?');">DELETE</a></td>  -->
                                             </tr>
                                             <?php
                                                     // echo $row["SP_ID"];

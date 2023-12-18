@@ -39,14 +39,12 @@
                                         <thead>
                                             <tr>
                                                 <!-- <th>SP_ID</th> -->
-                                                <th>Tên Sách</th>
-                                                <th>Hình Ảnh</th>
-                                                <th>Nhà Xuất Bản</th>
-                                                <th>Tác Giả</th>
-                                                <th>Thể Loại</th>
+                                                <th>Tên cây</th>
+                                                <th>Hình ảnh</th>
+                                                <th>Mô tả</th>
+                                                <th>Số lượng</th>
                                                 <th>Chi Tiết</th>
-                                                <th>Cập nhật</th>
-                                                <th>Xóa</th>
+
                                             </tr>
                                         </thead>
                                     <tbody>
@@ -69,17 +67,13 @@
                                                 join theloai on theloai.TL_ID = sanpham.TL_ID $where
                                                 order by SP_ID");
                                             }else{
-                                                $sql_str = "Select SP_ID,TenSach,HinhAnh,nhaxuatban.TenNXB,tacgia.TenTG,theloai.TenTL from sanpham 
-                                                join nhaxuatban on nhaxuatban.NXB_ID = sanpham.NXB_ID
-                                                join tacgia on tacgia.TG_ID = sanpham.TG_ID
-                                                join theloai on theloai.TL_ID = sanpham.TL_ID
-                                                order by SP_ID LIMIT $item_per_page Offset $offset";
+                                                $sql_str = "Select Cay_ID,TenCay,HinhAnh,MoTa,SoLuong from Cay 
+                                                
+                                                order by Cay_ID LIMIT $item_per_page Offset $offset";
                                                 $result = mysqli_query($conn, $sql_str);
-                                                $record = mysqli_query($conn, "Select SP_ID,TenSach,HinhAnh,nhaxuatban.TenNXB,tacgia.TenTG,theloai.TenTL from sanpham
-                                                join nhaxuatban on nhaxuatban.NXB_ID = sanpham.NXB_ID
-                                                join tacgia on tacgia.TG_ID = sanpham.TG_ID
-                                                join theloai on theloai.TL_ID = sanpham.TL_ID
-                                                order by SP_ID");
+                                                $record = mysqli_query($conn, "Select Cay_ID,TenCay,HinhAnh,SoLuong
+                                                from Cay
+                                                order by Cay_ID");
                                             }
                                             $totalRecords = $record->num_rows;
                                             $totalpage = ceil($totalRecords/$item_per_page);
@@ -87,16 +81,15 @@
                                                 ?>
                                         
                                             <tr>
-                                                <!-- <td><?=$row['SP_ID']?></td> -->
-                                                <td><?=$row['TenSach']?></td>
+                                                <!-- <td><?=$row['Cay_ID']?></td> -->
+                                                <td><?=$row['TenCay']?></td>
                                                 <td><img src="upload/<?=$row['HinhAnh']?>" alt="" width="100px"></td>
-                                                <td><?=$row['TenNXB']?></td>
-                                                <td><?=$row['TenTG']?></td>
-                                                <td><?=$row['TenTL']?></td>
-                                                <td><a href="detailproduct.php?SP_ID=<?=$row['SP_ID']?>" class="btn btn-space btn-success">VIEW</a></td>
-                                                <td><a href="editproduct.php?SP_ID=<?=$row['SP_ID']?>" class="btn btn-space btn-warning">EDIT</a></td>
+                                                <td><?=$row['MoTa']?></td>
+                                                <td><?=$row['SoLuong']?></td>
+                                                <td><a href="detailproduct.php?Cay_ID=<?=$row['Cay_ID']?>" class="btn btn-space btn-success">VIEW</a></td>
+                                                <!-- <td><a href="editproduct.php?SP_ID=<?=$row['SP_ID']?>" class="btn btn-space btn-warning">EDIT</a></td>
                                                 <td><a href="deleteproduct.php?SP_ID=<?=$row['SP_ID']?>" class="btn btn-space btn-danger" 
-                                                    onclick="return confirm('Bạn chắc chắn muốn xóa mục này?');">DELETE</a></td> 
+                                                    onclick="return confirm('Bạn chắc chắn muốn xóa mục này?');">DELETE</a></td>  -->
                                             </tr>
                                             <?php
                                                     // echo $row["SP_ID"];

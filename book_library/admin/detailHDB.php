@@ -69,14 +69,14 @@
                                                 order by chitiethdb.HDB_ID");
                                             }else{
                                                 $sql_str = "Select chitiethdb.HDB_ID, chitiethdb.CTSP_ID, chitiethdb.SoLuong from chitiethdb
-                                                join hoadonban on chitiethdb.HDB_ID = hoadonban.HDB_ID
-                                                join chitietsp on chitiethdb.CTSP_ID = chitietsp.CTSP_ID
+                                                join hoadondat on chitiethdb.HDB_ID = hoadondat.HDB_ID
+                                                join chitietsp on chitiethdb.CTSP_ID = chitietsp.ChiTietThu
                                                 where chitiethdb.HDB_ID = $HDB_ID
                                                 order by chitiethdb.HDB_ID LIMIT $item_per_page Offset $offset";
                                                 $result = mysqli_query($conn, $sql_str); 
                                                 $record = mysqli_query($conn, "Select chitiethdb.HDB_ID, chitiethdb.CTSP_ID, chitiethdb.SoLuong from chitiethdb
-                                                join hoadonban on chitiethdb.HDB_ID = hoadonban.HDB_ID
-                                                join chitietsp on chitiethdb.CTSP_ID = chitietsp.CTSP_ID
+                                                join hoadondat on chitiethdb.HDB_ID = hoadondat.HDB_ID
+                                                join chitietsp on chitiethdb.CTSP_ID = chitietsp.ChiTietThu
                                                 where chitiethdb.HDB_ID = $HDB_ID
                                                 order by chitiethdb.HDB_ID");
                                             }

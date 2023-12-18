@@ -42,12 +42,10 @@
                                                 <th>NgayBan</th>
                                                 <th>TenKH</th>
                                                 <th>TenNV</th>
-                                                <th>PhuongThuc</th>
+                                               
                                                 <th>TongTien</th>
                                                 <th>Chi Tiết</th>
-                                                <th>Sửa</th>
-                                                <th>Xóa</th>
-                                                <!-- <th>Operation</th> -->
+                                              
                                             </tr>
                                         </thead>
                                     <tbody>
@@ -69,15 +67,15 @@
                                                     order by HDB_ID");
                                                     $result = mysqli_query($conn, $sql_str);
                                                 }else{
-                                                    $sql_str = "Select HDB_ID,NgayBan,TongTien,khachhang.TenKH,nhanvien.TenNV,thanhtoan.PhuongThuc from hoadonban 
-                                                    join khachhang on khachhang.KH_ID = hoadonban.KH_ID
-                                                    join nhanvien on nhanvien.NV_ID = hoadonban.NV_ID
-                                                    join thanhtoan on thanhtoan.TT_ID = hoadonban.TT_ID 
+                                                    $sql_str = "Select HDB_ID,NgayDat,TongTien,khachhang.TenKH,nhanvien.TenNV from hoadondat 
+                                                    join khachhang on khachhang.KH_ID = hoadondat.KH_ID
+                                                    join nhanvien on nhanvien.NV_ID = hoadondat.NV_ID
+                                                    
                                                     order by HDB_ID LIMIT $item_per_page Offset $offset";
-                                                    $record = mysqli_query($conn, "Select HDB_ID,NgayBan,TongTien,khachhang.TenKH,nhanvien.TenNV,thanhtoan.PhuongThuc from hoadonban 
-                                                    join khachhang on khachhang.KH_ID = hoadonban.KH_ID
-                                                    join nhanvien on nhanvien.NV_ID = hoadonban.NV_ID
-                                                    join thanhtoan on thanhtoan.TT_ID = hoadonban.TT_ID 
+                                                    $record = mysqli_query($conn, "Select HDB_ID,NgayDat,TongTien,khachhang.TenKH,nhanvien.TenNV from hoadondat 
+                                                    join khachhang on khachhang.KH_ID = hoadondat.KH_ID
+                                                    join nhanvien on nhanvien.NV_ID = hoadondat.NV_ID
+                                                
                                                     order by HDB_ID");
                                                     $result = mysqli_query($conn, $sql_str);
                                                 }
@@ -89,16 +87,14 @@
                                         
                                             <tr>
                                                 <td><?=$row['HDB_ID']?></td>
-                                                <td><?=$row['NgayBan']?></td>
+                                                <td><?=$row['NgayDat']?></td>
                                                 <td><?=$row['TenKH']?></td>
                                                 <td><?=$row['TenNV']?></td>
-                                                <td><?=$row['PhuongThuc']?></td>
+                                               
                                                 <td><?=$row['TongTien']?></td>
                                                 <td><a href="detailHDB.php?HDB_ID=<?=$row['HDB_ID']?>" class="btn btn-space btn-success">VIEW</a></td>
-                                                <td><a href="editHDB.php?HDB_ID=<?=$row['HDB_ID']?>" class="btn btn-space btn-warning">EDIT</a></td>
-                                                <td><a href="deleteHDB.php?HDB_ID=<?=$row['HDB_ID']?>" class="btn btn-space btn-danger" 
-                                                    onclick="return confirm('Bạn chắc chắn muốn xóa mục này?');">DELETE</a></td> 
-                                                <!-- <td>EDIT | DELETE</td> -->
+                                                
+                                                
                                                 
                                             </tr>
                                             <?php
